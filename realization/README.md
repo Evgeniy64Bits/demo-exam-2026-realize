@@ -1,4 +1,4 @@
-# Развёртывание стенда (реализация)
+<img width="428" height="430" alt="select-io-controller-types" src="https://github.com/user-attachments/assets/4b8b3160-8344-406c-87e5-dbbef22794a3" /><img width="428" height="430" alt="select-network-type" src="https://github.com/user-attachments/assets/a7edcb21-da8e-4065-bf6d-ece6a060e539" /># Развёртывание стенда (реализация)
 
 ## Введение
 
@@ -302,6 +302,8 @@ pictures-r
 Установите VMware Workstation
 (отдельной инструкции не будет)
 
+![Шаг1](../pictures-r/vmware-main.png)
+
 Моя версия:
 VMware Workstation 17 Pro
 Version: 17.6.4 build-24832109
@@ -310,9 +312,9 @@ Version: 17.6.4 build-24832109
 
 ## Шаг 2 — создание виртуальной машины ISP
 
-Создаём новую виртуальную машину:
+Создаём новую виртуальную машину ISP:
 
-![Создание ВМ](../pictures-r/select-open-vm.png)
+![Шаг2](../pictures-r/create-type-custom.png)
 
 Выбираем "Create a New Virtual Machine" → тип конфигурации "Custom", затем просто далее.
 
@@ -326,15 +328,16 @@ Version: 17.6.4 build-24832109
 
 Позже подключим ISO.
 
-![Шаг 3](../pictures-r/isp-first-adapter-network.png)
+![Шаг 3](../pictures-r/guest-os-installation.png)
 
 ---
 
 ### Шаг 4
 
 Выберем тип гостевой ОС:
-
 Other 64-bit
+
+![Шаг 4](../pictures-r/select-guest-os.png)
 
 ---
 
@@ -345,6 +348,8 @@ ISP-m1
 
 Location — укажите каталог, где хотите сохранять файлы ВМ.
 
+![Шаг 5](../pictures-r/vm-name-location.png)
+
 ---
 
 ### Шаг 6
@@ -354,13 +359,16 @@ Location — укажите каталог, где хотите сохранят
 * 1 процессор
 * 1 ядро на процессор
 
+![Шаг 6](../pictures-r/cpu-config.png)
+
 ---
 
 ### Шаг 7
 
 Указываем объём ОЗУ:
-
 1024 MB
+
+![Шаг 7](../pictures-r/select-ram.png)
 
 ---
 
@@ -371,6 +379,8 @@ Location — укажите каталог, где хотите сохранят
 "Do not use a network connection"
 
 Позже добавим сетевые адаптеры.
+
+![Шаг 8](../pictures-r/select-network-type.png)
 
 ---
 
@@ -384,6 +394,8 @@ I/O controller types.
 
 Он оптимизирован для виртуальных сред.
 
+![Шаг 9](../pictures-r/select-io-controller-types.png)
+
 ---
 
 ### Шаг 10
@@ -391,8 +403,9 @@ I/O controller types.
 Virtual disk type.
 
 Я выберу:
-
 "SCSI"
+
+![Шаг 10](../pictures-r/select-disk-type)
 
 ---
 

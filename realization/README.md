@@ -314,9 +314,9 @@ Version: 17.6.4 build-24832109
 
 Создаём новую виртуальную машину ISP:
 
-![Шаг2](../pictures-r/create-type-custom.png)
-
 Выбираем "Create a New Virtual Machine" → тип конфигурации "Custom", затем просто далее.
+
+![Шаг2](../pictures-r/create-type-custom.png)
 
 ---
 
@@ -405,7 +405,7 @@ Virtual disk type.
 Я выберу:
 "SCSI"
 
-![Шаг 10](../pictures-r/select-disk-type)
+![Шаг 10](../pictures-r/select-disk-type.png)
 
 ---
 
@@ -415,11 +415,15 @@ Virtual disk type.
 
 "Create a new virtual disk"
 
+![Шаг 11.1](../pictures-r/select-disk-create.png)
+
 Максимальный размер:
 10 GB
 
 Выбираем:
 "Store virtual disk as a single file"
+
+![Шаг 11.2](../pictures-r/size-disk-and-store.png)
 
 Затем просто далее и Finish.
 
@@ -438,12 +442,16 @@ Virtual disk type.
 
 "Edit virtual machine settings"
 
+![Шаг 12.1](../pictures-r/edit-vm-settings.png)
+
 На вкладке CD/DVD:
 
 * выбираем "Use ISO image file:"
 * жмём "Browse"
 
 Выбираем подготовленный образ Alt JeOS на базе systemd.
+
+![Шаг 12.2](../pictures-r/iso-image-select.png)
 
 ---
 
@@ -461,6 +469,8 @@ Systemd — это подсистема инициализации и управ
 
 "Add" → "Network Adapter"
 
+![Шаг 13.1](../pictures-r/add-network-adapters.png)
+
 И так 2 раза.
 
 ---
@@ -468,23 +478,25 @@ Systemd — это подсистема инициализации и управ
 1️⃣ Первый адаптер
 
 * Network connection: Custom
-* VMnet8 (NAT)
+* VMnet8 (NAT). Этот адаптер будет использоваться для выхода наружу.
 
-![Сеть ISP](../pictures-r/isp-second-adapter-network.png)
+![Шаг 13.2](../pictures-r/isp-first-adapter-network.png)
 
 ---
 
 2️⃣ Второй адаптер
 
-* VMnet2
+* VMnet2. Он будет смотреть к HQ-RTR.
+
+![Шаг 13.3](../pictures-r/isp-second-adapter-network.png)
 
 ---
 
 3️⃣ Третий адаптер
 
-* VMnet3
+* VMnet3. Он будет смотреть к BR-RTR.
 
-![Сеть ISP](../pictures-r/isp-third-adapter-network.png)
+![Шаг 13.4](../pictures-r/isp-third-adapter-network.png)
 
 ---
 
@@ -494,11 +506,20 @@ Systemd — это подсистема инициализации и управ
 
 ---
 
-## Шаг 14 — создание маршрутизаторов
+## Шаг 14
+
+Создаём HQ-RTR и BR-RTR.
+
+Особенность их создания в том, что мы используем готовый файл конфигурации формата .ovf (Open Virtualization Format). В нём лежат корректные настройки для создания EcoRouter, чтобы он смог завестись.
+
+Иначе он будет в бесконечном зависании на экране "Welcome to GRUB", я пробовал.
 
 Нажимаем:
 
 "Open a Virtual Machine"
 
-![Выбор VM](../pictures-r/select-ovf-file.png)
+![Шаг 14.1](../pictures-r/select-open-vm.png)
 
+Выбираем подготовленный .ovf файл. Он лежит в mydocs репозитория.
+
+![Шаг 14.2](../pictures-r/select-ovf-file.png)

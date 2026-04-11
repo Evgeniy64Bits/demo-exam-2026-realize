@@ -498,8 +498,6 @@ Systemd — это подсистема инициализации и управ
 
 ![Шаг 13.4](../pictures-r/isp-third-adapter-network.png)
 
----
-
 Жмём "OK"
 
 Создание ISP завершено.

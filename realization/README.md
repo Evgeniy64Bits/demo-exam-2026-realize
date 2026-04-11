@@ -1,4 +1,4 @@
-<img width="428" height="430" alt="select-io-controller-types" src="https://github.com/user-attachments/assets/4b8b3160-8344-406c-87e5-dbbef22794a3" /><img width="428" height="430" alt="select-network-type" src="https://github.com/user-attachments/assets/a7edcb21-da8e-4065-bf6d-ece6a060e539" /># Развёртывание стенда (реализация)
+# Развёртывание стенда (реализация)
 
 ## Введение
 

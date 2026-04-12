@@ -627,10 +627,13 @@ exit
 line vty 0 39
 exec-timeout 0 0
 exit
+write memory
 ```
 
 ![Шаг 21](../pictures-r/step21-routers.png)
 
 После пишем exit, перезаходим для применения тайм-аутов
+
+write memory - команда для записи изменений в маршрутизатор. Для большинства команд используются сокращённые версии (en, conf t, show run, wr mem, ip a и т.д.)
 
 ---

@@ -21,7 +21,3 @@ https://drive.google.com/drive/folders/10lCgb9bMV50xAe-K68IuXzHEC6bBArrE?usp=sha
 https://drive.google.com/drive/folders/1Jhe6vEA5BWbLx94JWoIWxu4pJhYhrI6z?usp=sharing
 
 (На гугл диск выложено мной)
-
----
-
-

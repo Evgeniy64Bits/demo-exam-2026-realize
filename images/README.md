@@ -1,5 +1,7 @@
 # Ссылки/ресурсы для скачивания образов операционных систем
 
+и Additional.iso
+
 ### ALT Server 10.1 (официальный репозиторий alt)
 
 https://packages.altlinux.org/ru/p10/images/alt-server/p10:alt-server:::release.10.1.0:x86_64:install:iso/

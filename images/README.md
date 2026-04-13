@@ -16,10 +16,12 @@ https://nightly.altlinux.org/p11/release/
 
 https://drive.google.com/drive/folders/10lCgb9bMV50xAe-K68IuXzHEC6bBArrE?usp=sharing
 
-(На гугл диск выложено мной)
-
 ### EcoRouterOS (Google диск, учебная версия, не установочный образ)
 
 https://drive.google.com/drive/folders/1Jhe6vEA5BWbLx94JWoIWxu4pJhYhrI6z?usp=sharing
+
+### Additional для модуля 2 (Google диск)
+
+https://drive.google.com/drive/folders/19zDm1V14uERkWW4vIBQw67x97dWiuPHO?usp=sharing
 
 (На гугл диск выложено мной)

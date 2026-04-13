@@ -1,0 +1,398 @@
+============================================================================================
+1. Настройка имён устройств
+
+``HQ-RTR (_EcoRouterOS_)
+>en
+#conf t
+(config)#hostname hq-rtr.au-team.irpo
+ip domain-name au-team.irpo
+exit
+#write memory                               
+
+``BR-RTR (_EcoRouterOS_)
+(config)#hostname hq-rtr.au-team.irpo
+ip domain-name au-team.irpo
+exit
+write memory
+--------------------------------------------------------------------------------------------
+`HQ-SRV (_ALT Server_10.1_)
+hostnamectl set-hostname hq-srv.au-team.irpo
+`BR-SRV (_ALT Server_10.1_)
+hostnamectl set-hostname br-srv.au-team.irpo
+`HQ-CLI (_ALT Workstation_10.1_)
+hostnamectl set-hostname hq-cli.au-team.irpo
+`ISP (_ALT JeOS-systemd_)
+hostnamectl set-hostname ISP
+============================================================================================
+Настройка IP-адресов
+
+`ISP (_ALT JeOS-systemd_)
+echo HTTP_PROXY=http://10.0.21.52:3128 >> /etc/sysconfig/network
+reboot
+ip a	              
+ls /etc/net/ifaces     
+mkdir /etc/net/ifaces/ens3{4,5}          
+vim /etc/net/ifaces/ens33/options  # ИНТЕРНЕТ 
+BOOTPROTO=dhcp
+TYPE=eth
+DISABLED=no
+CONFIG_IPV4=yes
+vim /etc/net/ifaces/ens34/options # к HQ-RTR
+BOOTPROTO=static
+TYPE=eth
+DISABLED=no
+CONFIG_IPV4=yes
+echo 172.16.4.1/28 > /etc/net/ifaces/ens34/ipv4address 
+
+vim /etc/net/ifaces/ens35/options # к BR-RTR
+echo 172.16.5.1/28 > /etc/net/ifaces/ens35/ipv4address 
+--------------------------------------------------------------------------------------------
+`HQ-SRV (_ALT Server_10.1_)
+ls /etc/net/ifaces  
+vim /etc/net/ifaces/ens33/options
+# Изменяем следующие строчки:
+NM_CONTROLLED=no
+DISABLED=no
+echo 192.168.100.2/26 > /etc/net/ifaces/ens33/ipv4address
+echo default via 192.168.100.1 > /etc/net/ifaces/ens33/ipv4route
+--------------------------------------------------------------------------------------------
+`HQ-CLI (_ALT Workstation_10.1_)
+nano /etc/net/ifaces/ens33/options
+BOOTPROTO=dhcp
+TYPE=eth
+NM_CONTROLLED=no
+DISABLED=no
+CONFIG_WIRELESS=no
+SYSTEMD_BOOTPROTO=static
+CONFIG_IPV4=yes
+SYSTEMD_CONTROLLED=no
+ONBOOT=yes
+CONFIG_IPV6=no
+echo default via 192.168.100.65 > /etc/net/ifaces/ens33/ipv4route
+--------------------------------------------------------------------------------------------
+`BR-SRV (_ALT Server_10.1_)
+ls /etc/net/ifaces
+vim /etc/net/ifaces/ens33/options
+NM_CONTROLLED=no
+DISABLED=no
+TYPE=eth
+CONFIG_WIRELESS=no
+BOOTPROTO=static
+SYSTEMD_BOOTPROTO=static
+CONFIG_IPV4=yes
+SYSTEMD_CONTROLLED=no
+echo 192.168.50.2/27 > /etc/net/ifaces/ens33/ipv4address
+echo default via 192.168.50.1 > /etc/net/ifaces/ens33/ipv4route
+--------------------------------------------------------------------------------------------
+``HQ-RTR (_EcoRouterOS_)
+4. Настройте коммутацию в сегменте HQ следующим образом
+
+show run port
+(config)#port ge0
+no service-instance ge0
+service-instance ge0/isp-hq
+encapsulation untagged
+exit
+exit
+(config)#port te0
+service-instance te0/srv-net
+encapsulation dot1q 100
+rewrite pop 1
+exit
+service-instance te0/cli-net
+encapsulation dot1q 200
+rewrite pop 1
+exit
+service-instance te0/management
+encapsulation dot1q 999
+rewrite pop 1
+exit
+
+(config)#interface eth1
+ip address 172.16.4.2/28
+connect port ge0 service-instance ge0/isp-hq
+ip nat outside
+exit
+(config)#interface eth2
+ip address 192.168.100.1/26
+connect port te0 service-instance te0/srv-net
+ip nat inside
+exit
+(config)#interface eth3
+ip address 192.168.100.65/28
+connect port te0 service-instance te0/cli-net
+ip nat inside
+exit
+(config)#interface eth4
+ip address 192.168.100.81/29
+connect port te0 service-instance te0/management
+ip nat inside
+exit
+exit
+
+write мемоry
+--------------------------------------------------------------------------------------------
+``BR-RTR (_EcoRouterOS_)
+(config)#port ge0
+no service-instance ge0
+service-instance ge0/isp-br
+encapsulation-untagged
+exit
+exit
+(config)#port te0
+service-instance te0/br-net
+encapsulation-untagged
+exit
+exit
+
+(config)#interface eth1
+ip address 172.16.5.2/28
+connect port ge0 service-instance ge0/isp-br
+ip nat outside
+exit
+(config)#interface eth2
+ip address 192.168.50.1/27
+connect port te0 service-instance te0/br-net
+ip nat inside
+exit
+exit
+show 
+write memory
+============================================================================================
+11. Настройте часовой пояс на всех устройствах
+
+`HQ-SRV (_ALT Server_10.1_), `HQ-CLI (_ALT Workstation_10.1_), `BR-SRV (_ALT Server_10.1_)
+timedatectl set-timezone Europe/Moscow
+--------------------------------------------------------------------------------------------
+`ISP (_ALT JeOS-systemd_)
+apt-get update && apt-get install tzdata -y
+reboot
+timedatectl set-timezone Europe/Moscow
+--------------------------------------------------------------------------------------------
+``HQ-RTR (_EcoRouterOS_) и ``BR-RTR (_EcoRouterOS_)
+(config)#ntp timezone utc+3
+exit
+write memory
+============================================================================================
+2. Настройте доступ к сети Интернет, на маршрутизаторе ISP, доделывание - NAT
+
+`ISP (_ALT JeOS-systemd_)
+apt-get update && apt-get install nftables -y
+cat <<'EOT' > /etc/nftables/nftables.nft
+#!/usr/sbin/nft -f
+flush ruleset
+table ip nat {
+ chain postrouting {
+  type nat hook postrouting priority srcnat
+  oifname "ens33" masquerade
+ }
+}
+EOT
+
+systemctl enable --now nftables  
+echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf 
+sysctl -p                                      
+cat /proc/sys/net/ipv4/Ip forward            
+============================================================================================
+3. Создайте локальные учетные записи на серверах HQ-SRV и BR-SRV
+
+`HQ-SRV (_ALT Server_10.1_) и `BR-SRV (_ALT Server_10.1_)
+useradd -s /bin/bash -u 2026 sshuser  
+echo "sshuser:P@ssw0rd" | chpasswd   
+gpasswd -a sshuser wheel              
+echo 'sshuser ALL = (root) NOPASSWD: ALL' >> /etc/sudoers  
+--------------------------------------------------------------------------------------------
+3. Создайте пользователя net_admin на маршрутизаторах HQ-RTR и BR-RTR
+``HQ-RTR (_EcoRouterOS_) и ``BR-RTR (_EcoRouterOS_)
+username net_admin   
+password P@ssw0rd    
+role admin           
+============================================================================================
+9. Настройте протокол динамической конфигурации хостов для сети в
+сторону HQ-CLI
+
+``HQ-RTR (_EcoRouterOS_)
+(config)#ip pool dhcp 1
+range 192.168.100.66-192.168.100.78
+exit
+
+(config)#dhcp-server 1
+pool dhcp 64
+mask 255.255.255.240
+gateway 192.168.100.65
+dns 192.168.100.2
+domain-name au-team.irpo
+
+(config)#interface eth3
+dhcp-server 1
+exit
+exit
+write memory
+============================================================================================
+8. Настройка динамической трансляции адресов маршрутизаторах HQ-RTR и BR-RTR
+
+``HQ-RTR (_EcoRouterOS_)
+(config)#ip nat pool nat 192.168.100.1-192.168.100.78,192.168.100.81-192.168.100.86
+(config)#ip nat source dynamic inside-to-outside pool nat overload interface eth1
+--------------------------------------------------------------------------------------------
+``BR-RTR (EcoRouterOS)
+(config)#ip nat pool nat 192.168.50.1-192.168.50.30
+(config)#ip nat source dynamic inside-to-outside pool nat overload interface eth1
+
+write memory
+============================================================================================
+6. Между офисами HQ и BR, на маршрутизаторах HQ-RTR и BR-RTR
+необходимо сконфигурировать ip туннель
+
+``HQ-RTR (_EcoRouterOS_)
+(config)#ip route 0.0.0.0/0 172.16.4.1 description default
+
+(config)#interface tunnel.1
+ip add 192.168.10.1/30
+ip tunnel 172.16.4.2 172.16.5.2 mode gre
+ip ospf authentication
+ip ospf authentication-key P@$$word
+exit
+
+``BR-RTR (_EcoRouterOS_)
+(config)#ip route 0.0.0.0/0 172.16.5.1 description default
+
+(config)#interface tunnel.1
+ip add 192.168.10.2/30
+ip tunnel 172.16.5.2 172.16.4.2 mode gre
+ip ospf authentication
+ip ospf authentication-key P@$$word
+exit
+============================================================================================
+7. Обеспечьте динамическую маршрутизацию на маршрутизаторах HQ-RTR и BR-RTR: сети одного 
+офиса должны быть доступны из другого офиса и наоборот
+
+``HQ-RTR (_EcoRouterOS_)
+(config)#router ospf 1
+network 192.168.10.0/30 area 0.0.0.0
+network 192.168.100.0/26 area 0.0.0.0
+network 192.168.100.64/28 area 0.0.0.0
+network 192.168.100.80/29 area 0.0.0.0
+passive-interface default
+no passive-interface tunnel.1
+exit
+
+``BR-RTR (_EcoRouterOS_)
+router ospf 1
+network 192.168.10.0/30 area 0.0.0.0
+network 192.168.50.0/27 area 0.0.0.0
+passive-interface default
+no passive-interface tunnel.1
+exit
+--------------------------------------------------------------------------------------------
+# Проверки:
+
+``HQ-RTR (_EcoRouterOS_) и ``BR-RTR (_EcoRouterOS_)
+show ip ospf neighbor
+show ip route ospf
+
+
+hq-rtr.au-team.irpo#show ip ospf neighbor
+Total number of full neighbors: 1
+OSPF process 1 VRF (default):
+Neighbor ID  |  Pri  | State       | Dead Timе | Address      | Interface
+192.168.50.1 |    1  | Full/Backup | 00:00:39  | 192.168.10.2 | tunnel.1
+hq-rtr.au-team.irpo#show ip route ospf
+IP Route Table for VRF "default"
+0       192.168.50.0/27 [110/2] via 192.168.10.2, tunnel.1, 00:07:10
+
+
+br-rtr.au-team.irpo#show ip ospf neighbor
+Total number of full neighbors: 1
+OSPF process 1 VRF (default):
+Neighbor ID    |  Pri  | State       | Dead Timе | Address      | Interface
+192.168.100.81 |    1  | Full/DR     | 00:00:31  | 192.168.10.1 | tunnel.1
+br-rtr.au-team.irpo#show ip route ospf
+IP Route Table for URF "default"
+0       192.168.100.0/26 [110/2] via 192.168.10.1, tunnel.1, 00:06:11
+0	192.168.100.64/28 [110/2] via 192.168.10.1, tunnel.1, 00:06:11
+0	192.168.100.80/29 [110/2] via 192.168.10.1, tunnel.1, 00:06:11
+--------------------------------------------------------------------------------------------
+``HQ-RTR (_EcoRouterOS_)
+ping 172.16.5.2
+ping 192.168.10.2
+ping 8.8.8.8
+ping 192.168.50.2
+
+``BR-RTR (_EcoRouterOS_)
+ping 172.16.4.2
+ping 192.168.10.1
+ping 8.8.8.8
+ping 192.168.100.2
+ping 192.168.100.66
+============================================================================================
+5. Настройте безопасный удаленный доступ на серверах HQ-SRV и BR-SRV
+
+`HQ-SRV (_ALT Server_10.1_) и `BR-SRV (_ALT Server_10.1_)
+mcedit /etc/openssh/sshd_config                         
+Port 2026
+MaxAuthTries 2
+Banner /etc/openssh/banner
+# В конце добавлем
+AllowUsers sshuser
+echo Authorized access only > /etc/openssh/banner 
+
+systemctl restart sshd                                  
+systemctl enable --now sshd
+systemctl status sshd                                   
+============================================================================================
+10. Настройте инфраструктуру разрешения доменных имён для офисов HQ и BR
+
+`HQ-SRV (_ALT Server_10.1_)
+apt-get update && apt-get install dnsmasq -y
+echo 'OPTIONS=""' > /etc/sysconfig/dnsmasq
+service network restart
+
+cat <<'EOT' > /etc/dnsmasq.conf
+no-resolv
+no-poll
+no-hosts
+
+server=77.88.8.7
+server=77.88.8.3
+server=195.208.4.1
+server=195.208.5.1
+server=8.8.8.8
+
+cache-size=1000
+all-servers
+no-negcache
+
+host-record=hq-rtr.au-team.irpo,192.168.100.1
+host-record=hq-srv.au-team.irpo,192.168.100.2
+host-record=hq-cli.au-team.irpo,192.168.100.66
+
+host-record=br-rtr.au-team.irpo,192.168.50.1
+host-record=br-srv.au-team.irpo,192.168.50.2
+
+ptr-record=1.100.168.192.in-addr.arpa,hq-rtr.au-team.irpo
+ptr-record=2.100.168.192.in-addr.arpa,hq-srv.au-team.irpo
+ptr-record=66.100.168.192.in-addr.arpa,hq-cli.au-team.irpo
+
+cname=moodle.au-team.irpo,hq-rtr.au-team.irpo
+cname=wiki.au-team.irpo,hq-rtr.au-team.irpo
+EOT
+
+systemctl enable --now dnsmasq
+
+systemctl disable bind
+systemctl stop bind
+systemctl start dnsmasq
+--------------------------------------------------------------------------------------------
+# Проверка:
+`HQ-SRV (_ALT Server_10.1_), `HQ-CLI (_ALT Workstation_10.1_), `BR-SRV (_ALT Server_10.1_)
+systemctl status dnsmasq
+nslookup hq-srv.au-team.irpo
+nslookup br-srv.au-team.irpo
+nslookup moodle.au-team.irpo
+nslookup 192.168.100.1
+
+ping hq-rtr.au-team.irpo
+ping br-rtr.au-team.irpo
+============================================================================================
+МОДУЛЬ 1 ПОЛНОСТЬЮ ВЫПОЛНЕН!

@@ -51,6 +51,10 @@ hostnamectl set-hostname ISP
 
 ### 🐧 ISP
 
+```bash
+echo HTTP_PROXY=http://10.0.21.52:3128 >> /etc/sysconfig/network
+```
+
 
 
 

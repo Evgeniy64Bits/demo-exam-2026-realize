@@ -35,3 +35,22 @@ br-rtr.au-team.irpo#write memory
 > [!NOTE]
 > Имя устройства нужно для удобной идентификации и корректной работы DNS.
 > Доменное имя устройства используется для генерации FQDN (полного имени) и работы DNS и SSH
+
+### 🐧 ALT Linux (HQ-SRV, BR-SRV, HQ-CLI, ISP)
+
+```
+hostnamectl set-hostname hq-srv.au-team.irpo
+hostnamectl set-hostname br-srv.au-team.irpo
+hostnamectl set-hostname hq-cli.au-team.irpo
+hostnamectl set-hostname ISP
+```
+
+> [!NOTE]
+> Устанавливается hostname в системе Linux
+
+
+
+
+
+
+

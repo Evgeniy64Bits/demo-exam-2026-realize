@@ -47,9 +47,9 @@ hostnamectl set-hostname hq-cli.au-team.irpo
 hostnamectl set-hostname ISP
 ```
 
-Настройка IP-адресов
+Настройка IP-адресов (Согласно таблице ниже)
 
-### 🐧 ISP
+
 
 > [!NOTE]
 > Не забываем сопоставить MAC-адрес интерфейса в системе с MAC-адресом соответствующего адаптера ВМ в среде виртуализации
@@ -63,6 +63,8 @@ hostnamectl set-hostname ISP
 > :wq - Записать изменения и выйти
 > 
 > :qa! - Выйти без применения изменений
+
+### 🐧 ISP
 
 ```
 echo HTTP_PROXY=http://10.0.21.52:3128 >> /etc/sysconfig/network
@@ -95,8 +97,6 @@ TYPE=eth
 DISABLED=no
 CONFIG_IPV4=yes
 echo 172.16.5.1/28 > /etc/net/ifaces/ens35/ipv4address 
-
-
 ```
 
 

@@ -50,7 +50,7 @@ hostnamectl set-hostname hq-cli.au-team.irpo
 hostnamectl set-hostname ISP
 ```
 
-## Настройка IP-адресов
+## 2. Настройка IP-адресов
 
 (Согласно таблице ниже)
 

@@ -40,7 +40,7 @@ br-rtr.au-team.irpo#write memory
 
 Устанавливаем hostname в системе Linux
 
-```bash
+```
 hostnamectl set-hostname hq-srv.au-team.irpo
 hostnamectl set-hostname br-srv.au-team.irpo
 hostnamectl set-hostname hq-cli.au-team.irpo
@@ -53,6 +53,9 @@ hostnamectl set-hostname ISP
 
 ```bash
 echo HTTP_PROXY=http://10.0.21.52:3128 >> /etc/sysconfig/network
+# Добавляет прокси (для выхода в интернет через прокси-сервер). Необходимо в условиях колледжской сети. Для каждого региона используется свой прокси-сервер.
+
+
 ```
 
 

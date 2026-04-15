@@ -61,6 +61,8 @@ hostnamectl set-hostname ISP
 > :wq - Записать изменения и выйти
 > 
 > :qa! - Выйти без применения изменений
+>
+> Не забываем сверить соответсвие MAC-адреса в системе с MAC-адресом в среде виртуализации
 
 ```
 echo HTTP_PROXY=http://10.0.21.52:3128 >> /etc/sysconfig/network
@@ -79,15 +81,22 @@ BOOTPROTO=dhcp
 TYPE=eth
 DISABLED=no
 CONFIG_IPV4=yes
-# Содержание файла options. Последние 2 строки необязательны
+# Содержание файла options. Последние 2 строки необязательны во всех случаях
 vim /etc/net/ifaces/ens34/options
 BOOTPROTO=static
 TYPE=eth
 DISABLED=no
 CONFIG_IPV4=yes
-# Содержание файла options. Последние 2 строки необязательны
 echo 172.16.4.1/28 > /etc/net/ifaces/ens34/ipv4address 
 # Назначает статический IP
+vim /etc/net/ifaces/ens35/options
+BOOTPROTO=static
+TYPE=eth
+DISABLED=no
+CONFIG_IPV4=yes
+echo 172.16.5.1/28 > /etc/net/ifaces/ens35/ipv4address 
+
+
 ```
 
 

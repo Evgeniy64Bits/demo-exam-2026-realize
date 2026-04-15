@@ -4,9 +4,8 @@
 
 🍃 Маршрутизаторы (HQ-RTR, BR-RTR)
 
-```
 
-```python
+```markdown
 ip addr
 ping 8.8.8.8
 ```

@@ -32,3 +32,6 @@ br-rtr.au-team.irpo(config)#exit
 br-rtr.au-team.irpo#write memory
 ```
 
+> [!NOTE]
+> Это обычная заметка
+

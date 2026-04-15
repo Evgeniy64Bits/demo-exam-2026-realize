@@ -5,7 +5,7 @@
 🍃 Маршрутизаторы (HQ-RTR, BR-RTR)
 
 
-```json
+```plaintext
 ip addr
 ping 8.8.8.8
 ```

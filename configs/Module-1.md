@@ -75,6 +75,11 @@ mkdir /etc/net/ifaces/ens35
 # Создаёт папки для интерфейсов ens34 и ens35. Либо - mkdir /etc/net/ifaces/ens3{4,5}
 vim /etc/net/ifaces/ens33/options
 # Создание и открывание файла options через тексторый редактор vim
+BOOTPROTO=dhcp
+TYPE=eth
+DISABLED=no
+CONFIG_IPV4=yes
+# Содержание файла options. Последние 2 строки необязательны
 ```
 
 

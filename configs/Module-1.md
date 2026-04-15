@@ -6,7 +6,7 @@
 
 ```
 
-```bash
+```python
 ip addr
 ping 8.8.8.8
 ```

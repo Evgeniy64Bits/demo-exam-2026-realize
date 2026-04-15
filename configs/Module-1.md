@@ -55,7 +55,12 @@ hostnamectl set-hostname ISP
 echo HTTP_PROXY=http://10.0.21.52:3128 >> /etc/sysconfig/network
 # Добавляет прокси (для выхода в интернет через прокси-сервер). Необходимо в условиях колледжской сети
 # Для каждого региона используется свой прокси-сервер
-
+ip a
+# Показывает все сетевые интерфейсы и IP
+ls /etc/net/ifaces
+# Список сетевых интерфейсов (ALT Linux использует эту директорию)
+mkdir /etc/net/ifaces/ens34
+mkdir /etc/net/ifaces/ens35
 ```
 
 

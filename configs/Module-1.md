@@ -14,7 +14,7 @@
 
 Сохранение конфигурации маршрутизатора - write memory (иначе после перезагрузки всё пропадёт)
 
-```
+```bash
 ecorouter>en
 ecorouter#conf t
 ecorouter(config)#hostname hq-rtr.au-team.irpo

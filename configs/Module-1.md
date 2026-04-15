@@ -61,6 +61,7 @@ ls /etc/net/ifaces
 # Список сетевых интерфейсов (ALT Linux использует эту директорию)
 mkdir /etc/net/ifaces/ens34
 mkdir /etc/net/ifaces/ens35
+# Создаёт папки для интерфейсов ens34 и ens35. Также можно так - mkdir /etc/net/ifaces/ens3{4,5}
 ```
 
 

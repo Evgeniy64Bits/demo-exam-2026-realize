@@ -49,6 +49,9 @@ hostnamectl set-hostname ISP
 
 Настройка IP-адресов
 
+### 🐧 ISP
+
+
 
 
 

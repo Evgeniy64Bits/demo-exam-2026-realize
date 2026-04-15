@@ -14,7 +14,7 @@
 
 Сохранение конфигурации маршрутизатора - write memory (иначе после перезагрузки всё пропадёт)
 
-```bash
+```
 ecorouter>en
 ecorouter#conf t
 ecorouter(config)#hostname hq-rtr.au-team.irpo
@@ -40,7 +40,7 @@ br-rtr.au-team.irpo#write memory
 
 Устанавливаем hostname в системе Linux
 
-```
+```bash
 hostnamectl set-hostname hq-srv.au-team.irpo
 hostnamectl set-hostname br-srv.au-team.irpo
 hostnamectl set-hostname hq-cli.au-team.irpo

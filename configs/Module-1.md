@@ -13,3 +13,22 @@
 3. ecorouter(config)#, команда configure terminal - глобальная конфигурация. Используется для изменения глобальных настроек
 
 Сохранение конфигурации маршрутизатора - write memory
+
+```
+ecorouter>en
+ecorouter#conf t
+ecorouter(config)#hostname hq-rtr.au-team.irpo
+hq-rtr.au-team.irpo(config)#ip domain-name au-team.irpo
+hq-rtr.au-team.irpo(config)#exit
+hq-rtr.au-team.irpo#write memory
+```
+
+```
+ecorouter>en
+ecorouter#conf t
+ecorouter(config)#hostname br-rtr.au-team.irpo
+br-rtr.au-team.irpo(config)#ip domain-name au-team.irpo
+br-rtr.au-team.irpo(config)#exit
+br-rtr.au-team.irpo#write memory
+```
+

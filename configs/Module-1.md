@@ -80,6 +80,14 @@ TYPE=eth
 DISABLED=no
 CONFIG_IPV4=yes
 # Содержание файла options. Последние 2 строки необязательны
+vim /etc/net/ifaces/ens34/options
+BOOTPROTO=static
+TYPE=eth
+DISABLED=no
+CONFIG_IPV4=yes
+# Содержание файла options. Последние 2 строки необязательны
+echo 172.16.4.1/28 > /etc/net/ifaces/ens34/ipv4address 
+# Назначает статический IP
 ```
 
 

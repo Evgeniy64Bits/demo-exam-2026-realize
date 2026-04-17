@@ -8,12 +8,12 @@
 3.	Настройка NFS-сервера на HQ-SRV
 4.	Конфигурация файлового хранилища на HQ-SRV
 5.	Развёртывание веб-приложения на HQ-SRV
-6.      Настройка Ansible на BR-SRV
+6.  Настройка Ansible на BR-SRV
 7.	Развёртывание веб-приложения в Docker на BR-SRV
-8.      Настройка статической трансляции портов на маршрутизаторах
+8.  Настройка статической трансляции портов на маршрутизаторах
 9.	Настройка nginx как обратного прокси на ISP
 10.	Настройка web-based аутентификации на ISP
-11.     Настройка Samba DC на BR-SRV
+11. Настройка Samba DC на BR-SRV
 ============================================================================================
 # Удобство работы с EcoRouterOS (необязательно)
 # Отключаем тайм-аут разлогирования роутера
@@ -192,13 +192,10 @@ mysql -u root webdb < /mnt/cdrom/web/dump.sql
 # Пятый этап. Копирование файлов сайта
 # Копируем:
 cp /mnt/cdrom/web/index.php /var/www/html/
-mkdir /var/www/html/images
-cp /mnt/cdrom/web/logo.png /var/www/html/images/
+cp /mnt/cdrom/web/logo.png /var/www/html/
 # Права:
 chown -R apache2:apache2 /var/www/html
-chown -R apache2:apache2 /var/www/html/images
 chmod -R 777 /var/www/html
-chmod -R 777 /var/www/html/images
 -------------------------------------------------------------------------------------------
 # Проверка до просмотра сайта:
 curl http://localhost  # не должно быть Error 403 и "You don't have permission to access..."
@@ -231,10 +228,6 @@ http://192.168.100.2
 # Добавляем данные в форму сайта
 # Должны добавляться записи в БД, проверяется с помощью mysql -u web -p ->
 # USE webd -> SELECT * FROM employees
-# У сайта не показывается логотип, если хотим починить его отображение нужно изменить путь
-# до картинки в файле index.php
-# nano /var/www/html/index.php
-# меняем <img src="logo.png" на <img src="images/logo.png"
 # Сохраняем и systemctl restart httpd2
 ============================================================================================
 6. Настройка Ansible на BR-SRV

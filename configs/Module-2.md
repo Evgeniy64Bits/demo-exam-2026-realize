@@ -278,7 +278,8 @@ hq-cli ansible_host=192.168.100.66 ansible_user=hq-cli ansible_ssh_pass=123
 ansible_python_interpreter=/usr/bin/python3
 
 [routers]
-hq-rtr ansible_host=192.168.100.1 ansible_user=admin ansible_password=admin ansible_connection=network_cli ansible_network_os=ios ansible_python_interpreter=/usr/bin/python3
+hq-rtr ansible_host=192.168.100.1 ansible_user=admin ansible_password=admin
+ansible_connection=network_cli ansible_network_os=ios ansible_python_interpreter=/usr/bin/python3
 br-rtr ansible_host=192.168.50.1 ansible_user=admin ansible_password=admin
 ansible_connection=network_cli ansible_network_os=ios
 ansible_python_interpreter=/usr/bin/python3

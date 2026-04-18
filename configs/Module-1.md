@@ -209,7 +209,7 @@ systemctl restart network
 
 ```
 # options уже корректно настроен
-echo 192.168.50.2/26 > /etc/net/ifaces/ens32/ipv4address
+echo 192.168.50.2/27 > /etc/net/ifaces/ens32/ipv4address
 echo default via 192.168.50.1 > /etc/net/ifaces/ens32/ipv4route
 systemctl restart network
 ```

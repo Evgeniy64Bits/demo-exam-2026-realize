@@ -221,7 +221,9 @@ systemctl restart network
 
 ### 🍃 HQ-RTR
 
-VMware Workstation / Proxmox (В Proxmox интерфейсы te0 и te1 - поймёте где-будут отличия, no service-instance прописывать в proxmox не нужно, там не нужной "сущности" по умолчанию нет)
+VMware Workstation / Proxmox 
+
+(В Proxmox интерфейсы te0 и te1 - поймёте где-будут отличия, no service-instance прописывать в proxmox не нужно, там не нужной "сущности" по умолчанию нет)
 
 ```
 

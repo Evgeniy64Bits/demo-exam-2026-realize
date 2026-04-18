@@ -220,3 +220,9 @@ systemctl restart network
 ## 3. Настройте коммутацию в сегменте HQ следующим образом
 
 ### 🍃 HQ-RTR
+
+VMware Workstation / Proxmox (В Proxmox интерфейсы te0 и te1 - поймёте где-будут отличия, no service-instance прописывать в proxmox не нужно, там не нужной "сущности" по умолчанию нет)
+
+```
+
+```

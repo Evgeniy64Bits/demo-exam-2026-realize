@@ -125,8 +125,7 @@ echo default via 192.168.100.1 > /etc/net/ifaces/ens33/ipv4route
 > [!NOTE]
 > На этом моменте идёт особенность конфигурирования в VMware Workstation
 > 
-> Различие в интерфейсах HQ-SRV и HQ-CLI, поскольку в VMware Workstation нет VSwitch, который сам добавит VLAN тег.
-> 
+> Различие в интерфейсах HQ-SRV и HQ-CLI, поскольку в VMware Workstation нет VSwitch (как в ESXI) и нет присвоения VLAN->тэга из под инструментария (как в Proxmox), с помощью которых добавится VLAN тег.
 > Поэтому VLAN приходится делать внутри Linux (ens32.X). Ниже показаны команды.
 
 ```

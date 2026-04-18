@@ -201,7 +201,10 @@ systemctl restart network
 
 ![zadanie-2](../pictures-m1/2-hq-cli-ens32-options.png)
 
-![zadanie-2](../pictures-m1/)
+![zadanie-2](../pictures-m1/2-hq-cli-ens32.200-options.png)
 
-![zadanie-2](../pictures-m1/)
+![zadanie-2](../pictures-m1/2-hq-cli-gateway-mtu.png)
+
+### 🐧 BR-SRV
+
 

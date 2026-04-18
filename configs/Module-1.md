@@ -316,6 +316,6 @@ exit
 #write memory
 ```
 
-![zadanie-3](../pictures-m1/)
+![zadanie-3](../pictures-m1/3-br-rtr-port-int-conf.png)
 
 ![zadanie-3](../pictures-m1/)

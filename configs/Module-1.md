@@ -130,8 +130,20 @@ echo default via 192.168.100.1 > /etc/net/ifaces/ens33/ipv4route
 > и нет присвоения VLAN-тэга из под инструментария (как в Proxmox), с помощью которых добавится VLAN тег.
 > 
 > Поэтому VLAN приходится делать внутри Linux (ens32.X). Ниже показаны команды.
+> 
+> Выставляется MTU на значение 1400 (Влановые интерфейсы чувствительны к этому параметру, обсепечивает ping и открытие веб-приложения в дальнейшем на HQ-CLI)
 
 ```
+vim /etc/net/ifaces/ens32/options
+TYPE=eth
+BOOTPROTO=static
+ONBOOT=yes
+# Изменяем содержание к этому ввиду
+mkdir /etc/net/ifaces/ens32.100/options
+# VLAN 100, поэтому интерфейс ens32.100
+vim /etc/net/ifaces/ens32.100/options
+TYPE=vlan
+HOST=ens32
 
 ```
 

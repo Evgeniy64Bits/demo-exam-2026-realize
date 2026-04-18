@@ -83,9 +83,9 @@ ip a
 # Показывает все сетевые интерфейсы и IP
 ls /etc/net/ifaces
 # Список сетевых интерфейсов (ALT Linux использует эту директорию)
+mkdir /etc/net/ifaces/ens33
 mkdir /etc/net/ifaces/ens34
-mkdir /etc/net/ifaces/ens35
-# Создаёт папки для интерфейсов ens34 и ens35. Либо - mkdir /etc/net/ifaces/ens3{4,5}
+# Создаёт папки для интерфейсов ens33 и ens34. Либо - mkdir /etc/net/ifaces/ens3{3,4}
 vim /etc/net/ifaces/ens33/options
 # Создание и открытие файла options через тексторый редактор vim
 BOOTPROTO=dhcp
@@ -93,19 +93,21 @@ TYPE=eth
 DISABLED=no
 CONFIG_IPV4=yes
 # Содержание файла options. Последние 2 строки необязательны во всех случаях
+vim /etc/net/ifaces/ens33/options
+BOOTPROTO=static
+TYPE=eth
+DISABLED=no
+CONFIG_IPV4=yes
+echo 172.16.4.1/28 > /etc/net/ifaces/ens33/ipv4address 
+# Назначает статический IP
 vim /etc/net/ifaces/ens34/options
 BOOTPROTO=static
 TYPE=eth
 DISABLED=no
 CONFIG_IPV4=yes
-echo 172.16.4.1/28 > /etc/net/ifaces/ens34/ipv4address 
-# Назначает статический IP
-vim /etc/net/ifaces/ens35/options
-BOOTPROTO=static
-TYPE=eth
-DISABLED=no
-CONFIG_IPV4=yes
-echo 172.16.5.1/28 > /etc/net/ifaces/ens35/ipv4address 
+echo 172.16.5.1/28 > /etc/net/ifaces/ens34/ipv4address
+systemctl restart network
+# Перезагружаем службу для обновления настроек сети
 ```
 
 ![zadanie-2](../pictures-m1/2-isp-ls-mkdir.png)
@@ -118,12 +120,13 @@ echo 172.16.5.1/28 > /etc/net/ifaces/ens35/ipv4address
 
 ```
 # options уже корректно настроен
-echo 192.168.100.2/26 > /etc/net/ifaces/ens33/ipv4address
-echo default via 192.168.100.1 > /etc/net/ifaces/ens33/ipv4route
+echo 192.168.100.2/26 > /etc/net/ifaces/ens19/ipv4address
+echo default via 192.168.100.1 > /etc/net/ifaces/ens19/ipv4route
+systemctl restart network
 ```
 
 > [!NOTE]
-> На этом моменте идёт особенность конфигурирования в VMware Workstation
+> На этом моменте идёт особенность конфигурирования в VMware Workstation. В Proxmox показано выше (нумерация интерфейсов там другая)
 > 
 > Различие в интерфейсах HQ-SRV и HQ-CLI, поскольку в VMware Workstation нет VSwitch (как в ESXI)
 >
@@ -139,12 +142,19 @@ TYPE=eth
 BOOTPROTO=static
 ONBOOT=yes
 # Изменяем содержание к этому ввиду
-mkdir /etc/net/ifaces/ens32.100/options
+mkdir /etc/net/ifaces/ens32.100
 # VLAN 100, поэтому интерфейс ens32.100
 vim /etc/net/ifaces/ens32.100/options
 TYPE=vlan
 HOST=ens32
-
+VID=100
+BOOTPROTO=static
+ONBOOT=yes
+echo 192.168.100.2/26 > /etc/net/ifaces/ens32.100/ipv4address
+echo default via 192.168.100.1 > /etc/net/ifaces/ens32.100/ipv4route
+echo mtu 1400 > /etc/net/ifaces/ens32.100/iplink
+# Такая директория на alt linux для выставления нового значения MTU
+systemctl restart network
 ```
 
 ![zadanie-2](../pictures-m1/2-hq-srv-options.png)

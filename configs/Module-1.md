@@ -282,5 +282,40 @@ exit
 
 ![zadanie-3](../pictures-m1/3-hq-rtr-port-service-instance.png)
 
+![zadanie-3](../pictures-m1/3-hq-rtr-int-config.png)
+
+### 🍃 BR-RTR
+
+```
+(config)#port ge0
+no service-instance ge0
+service-instance ge0/isp-hq
+encapsulation untagged
+exit
+exit
+
+(config)#port te0
+service-instance te0/br-net
+encapsulation-untagged
+exit
+exit
+
+(config)#interface eth1
+ip address 172.16.5.2/28
+connect port ge0 service-instance ge0/isp-br
+ip nat outside
+exit
+
+(config)#interface eth2
+ip address 192.168.50.1/27
+connect port te0 service-instance te0/br-net
+ip nat inside
+exit
+exit
+
+#write memory
+```
+
 ![zadanie-3](../pictures-m1/)
 
+![zadanie-3](../pictures-m1/)

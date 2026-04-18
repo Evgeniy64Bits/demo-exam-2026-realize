@@ -153,7 +153,8 @@ ONBOOT=yes
 echo 192.168.100.2/26 > /etc/net/ifaces/ens32.100/ipv4address
 echo default via 192.168.100.1 > /etc/net/ifaces/ens32.100/ipv4route
 echo mtu 1400 > /etc/net/ifaces/ens32.100/iplink
-# Такая директория на alt linux для выставления нового значения MTU (файл применяет парметры в формате команды ip link)
+# Такая директория на alt linux для выставления нового значения MTU
+# (файл применяет парметры в формате команды ip link)
 systemctl restart network
 ```
 

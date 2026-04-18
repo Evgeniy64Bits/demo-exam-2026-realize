@@ -166,5 +166,42 @@ systemctl restart network
 
 ### 🐧 HQ-CLI
 
+Для Proxmox
 
+```
+vim /etc/net/ifaces/ens32/options
+# Изменяем следующие строчки
+NM_CONTROLLED=no
+DISABLED=no
+BOOTPROTO=dhcp
+echo default via 192.168.100.65 > /etc/net/ifaces/ens32/ipv4route
+systemctl restart network
+```
+
+Для VMware Workstation
+
+```
+vim /etc/net/ifaces/ens32/options
+TYPE=eth
+BOOTPROTO=static
+ONBOOT=yes
+# Изменяем содержание к этому ввиду
+mkdir /etc/net/ifaces/ens32.200
+# VLAN 200, поэтому интерфейс ens32.200
+vim /etc/net/ifaces/ens32.200/options
+TYPE=vlan
+HOST=ens32
+VID=200
+BOOTPROTO=dhcp
+ONBOOT=yes
+echo default via 192.168.100.65 > /etc/net/ifaces/ens32.200/ipv4route
+echo mtu 1400 > /etc/net/ifaces/ens32.200/iplink
+systemctl restart network
+```
+
+![zadanie-2](../pictures-m1/)
+
+![zadanie-2](../pictures-m1/)
+
+![zadanie-2](../pictures-m1/)
 

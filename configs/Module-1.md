@@ -35,6 +35,8 @@ br-rtr.au-team.irpo(config)#exit
 br-rtr.au-team.irpo#write memory
 ```
 
+![zadanie-1](../pictures-m1/1-hostname-ecorouter.png)
+
 > [!NOTE]
 > Имя устройства нужно для удобной идентификации и корректной работы DNS.
 > Доменное имя устройства используется для генерации FQDN (полного имени) и работы DNS и SSH
@@ -49,6 +51,8 @@ hostnamectl set-hostname br-srv.au-team.irpo;exec bash
 hostnamectl set-hostname hq-cli.au-team.irpo;exec bash
 hostnamectl set-hostname ISP
 ```
+
+![zadanie-1](../pictures-m1/1-hostname-alt.png)
 
 ## 2. Настройка IP-адресов
 

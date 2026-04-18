@@ -234,6 +234,7 @@ service-instance ge0/isp-hq
 encapsulation untagged
 exit
 exit
+
 (config)#port te0
 service-instance te0/srv-net
 encapsulation dot1q 100
@@ -247,4 +248,31 @@ service-instance te0/management
 encapsulation dot1q 999
 rewrite pop 1
 exit
+
+(config)#interface eth1
+ip address 172.16.4.2/28
+connect port ge0 service-instance ge0/isp-hq
+ip nat outside
+exit
+
+(config)#interface eth2
+ip address 192.168.100.1/26
+connect port te0 service-instance te0/srv-net
+ip nat inside
+exit
+
+(config)#interface eth3
+ip address 192.168.100.65/28
+connect port te0 service-instance te0/cli-net
+ip nat inside
+exit
+
+(config)#interface eth4
+ip address 192.168.100.81/29
+connect port te0 service-instance te0/management
+ip nat inside
+exit
+exit
+
+#write мемоry
 ```

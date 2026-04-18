@@ -114,5 +114,30 @@ echo 172.16.5.1/28 > /etc/net/ifaces/ens35/ipv4address
 
 ![zadanie-2](../pictures-m1/2-isp-ipv4address.png)
 
+### 🐧 HQ-SRV
+
+```
+# options уже корректно настроен
+echo 192.168.100.2/26 > /etc/net/ifaces/ens33/ipv4address
+echo default via 192.168.100.1 > /etc/net/ifaces/ens33/ipv4route
+```
+
+> [!NOTE]
+> На этом моменте идёт особенность конфигурирования в VMware Workstation
+> 
+> Различие в интерфейсах HQ-SRV и HQ-CLI, поскольку в VMware Workstation нет VSwitch, который сам добавит VLAN тег.
+> 
+> Поэтому VLAN приходится делать внутри Linux (ens32.X). Ниже показаны команды.
+
+```
+
+```
+
+![zadanie-2](../pictures-m1/2-hq-srv-options.png)
+
+![zadanie-2](../pictures-m1/2-hq-srv-ipv4address.png)
+
+### 🐧 HQ-CLI
+
 
 

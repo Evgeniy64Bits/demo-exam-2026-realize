@@ -289,7 +289,7 @@ exit
 ```
 (config)#port ge0
 no service-instance ge0
-service-instance ge0/isp-hq
+service-instance ge0/isp-br
 encapsulation untagged
 exit
 exit

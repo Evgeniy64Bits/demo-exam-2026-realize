@@ -248,6 +248,7 @@ service-instance te0/management
 encapsulation dot1q 999
 rewrite pop 1
 exit
+exit
 
 (config)#interface eth1
 ip address 172.16.4.2/28

@@ -280,7 +280,7 @@ exit
 
 ![zadanie-3](../pictures-m1/3-hq-rtr-show-run-port.png)
 
-![zadanie-3](../pictures-m1/)
+![zadanie-3](../pictures-m1/3-hq-rtr-port-service-instance.png)
 
 ![zadanie-3](../pictures-m1/)
 

@@ -44,9 +44,9 @@ br-rtr.au-team.irpo#write memory
 Устанавливаем hostname в системе Linux
 
 ```
-hostnamectl set-hostname hq-srv.au-team.irpo
-hostnamectl set-hostname br-srv.au-team.irpo
-hostnamectl set-hostname hq-cli.au-team.irpo
+hostnamectl set-hostname hq-srv.au-team.irpo;exec bash
+hostnamectl set-hostname br-srv.au-team.irpo;exec bash
+hostnamectl set-hostname hq-cli.au-team.irpo;exec bash
 hostnamectl set-hostname ISP
 ```
 

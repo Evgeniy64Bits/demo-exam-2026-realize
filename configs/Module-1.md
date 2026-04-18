@@ -226,5 +226,25 @@ VMware Workstation / Proxmox
 (В Proxmox интерфейсы te0 и te1 - поймёте где-будут отличия, no service-instance прописывать в proxmox не надо, там ненужной "сущности" по умолчанию нет)
 
 ```
-
+#show run port
+conf t
+(config)#port ge0
+no service-instance ge0
+service-instance ge0/isp-hq
+encapsulation untagged
+exit
+exit
+(config)#port te0
+service-instance te0/srv-net
+encapsulation dot1q 100
+rewrite pop 1
+exit
+service-instance te0/cli-net
+encapsulation dot1q 200
+rewrite pop 1
+exit
+service-instance te0/management
+encapsulation dot1q 999
+rewrite pop 1
+exit
 ```

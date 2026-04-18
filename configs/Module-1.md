@@ -223,7 +223,7 @@ systemctl restart network
 
 VMware Workstation / Proxmox 
 
-(В Proxmox интерфейсы te0 и te1 - поймёте где-будут отличия, no service-instance прописывать в proxmox не нужно, там ненужной "сущности" по умолчанию нет)
+(В Proxmox интерфейсы te0 и te1 - поймёте где-будут отличия, no service-instance прописывать в proxmox не надо, там ненужной "сущности" по умолчанию нет)
 
 ```
 

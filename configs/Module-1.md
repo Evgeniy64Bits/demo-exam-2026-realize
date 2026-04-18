@@ -158,9 +158,11 @@ echo mtu 1400 > /etc/net/ifaces/ens32.100/iplink
 systemctl restart network
 ```
 
-![zadanie-2](../pictures-m1/2-hq-srv-options.png)
+![zadanie-2](../pictures-m1/2-hq-srv-ens32-options.png)
 
-![zadanie-2](../pictures-m1/2-hq-srv-ipv4address.png)
+![zadanie-2](../pictures-m1/2-hq-srv-ens32.100-options.png)
+
+![zadanie-2](../pictures-m1/2-hq-srv-echo-ip-mtu.png)
 
 ### 🐧 HQ-CLI
 

@@ -199,7 +199,7 @@ echo mtu 1400 > /etc/net/ifaces/ens32.200/iplink
 systemctl restart network
 ```
 
-![zadanie-2](../pictures-m1/)
+![zadanie-2](../pictures-m1/2-hq-cli-ens32-options.png)
 
 ![zadanie-2](../pictures-m1/)
 

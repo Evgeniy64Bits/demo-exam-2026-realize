@@ -460,7 +460,7 @@ exit
 #write memory
 ```
 
-![zadanie-7](../pictures-m1/
+![zadanie-7](../pictures-m1/7-ecorouter-dhcp.png)
 
 ## 8. Настройка динамической трансляции адресов маршрутизаторах
 

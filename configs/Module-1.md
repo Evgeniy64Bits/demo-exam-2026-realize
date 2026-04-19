@@ -464,10 +464,17 @@ exit
 
 ## 8. Настройка динамической трансляции адресов маршрутизаторах
 
+> [!NOTE]
+> pool nat создаём. На HQ-RTR - диапазон адресов VLAN 100, VLAN 200, VLAN 999. На BR-RTR - диапазон BR-сети.
+> Настраиваем динамическую трансляцию исходящих адресов (PAT/NAT Overload) для всех внутренних сетей при выходе через внешние интерфейсы (isp-hq и isp-br - eth1 у обоих EcoRouter'ов)
+
 ### 🍃 HQ-RTR
 
 ```
-
+(config)#ip nat pool nat 192.168.100.1-192.168.100.78,192.168.100.81-192.168.100.86
+(config)#ip nat source dynamic inside-to-outside pool nat overload interface eth1
+exit
+write memory
 ```
 
 ![zadanie-8](../pictures-m1/
@@ -475,7 +482,10 @@ exit
 ### 🍃 BR-RTR
 
 ```
-
+(config)#ip nat pool nat 192.168.50.1-192.168.50.30
+(config)#ip nat source dynamic inside-to-outside pool nat overload interface eth1
+exit
+write memory
 ```
 
 ![zadanie-8](../pictures-m1/

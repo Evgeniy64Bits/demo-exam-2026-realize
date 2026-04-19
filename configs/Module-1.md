@@ -354,4 +354,30 @@ exit
 write memory
 ```
 
-![zadanie-4](../pictures-m1/)
+![zadanie-4](../pictures-m1/4-ecorouter-timezone.png)
+
+## 5. Настройте доступ к сети Интернет, на маршрутизаторе ISP
+
+> [!NOTE]
+> Настраиваем NAT с помощью nftables, обеспечивая подмену всех внутренних IP-адресов на IP-адрес внешнего интерфейса ISP для исходящего трафика. Используем конструкцию "cat <<'EOT' > " для передачи многострочного текста в команду. Команда cat в Linux может работать не только с файлами, но и с потоком ввода (stdin). Если ей не указывать файл, она начинает получать данные из терминала. EOT здесь выступает в роли маркера, который указывает на завершение ввода данных для команды cat.
+>
+> Соблюдаем отступы. Также можно просто vim'ом открыть файл и вписать содержимое. Но так круче)
+
+### 🐧 ISP
+
+```
+apt-get install nftables -y
+cat <<'EOT' > /etc/nftables/nftables.nft
+#!/usr/sbin/nft -f
+flush ruleset
+table ip nat {
+ chain postrouting {
+  type nat hook postrouting priority srcnat
+  oifname "ens32" masquerade
+ }
+}
+EOT
+```
+
+![zadanie-5](../pictures-m1/)
+

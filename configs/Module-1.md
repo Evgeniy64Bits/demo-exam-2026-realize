@@ -366,6 +366,8 @@ write memory
 > Соблюдаем отступы. Также можно просто vim'ом открыть файл и вписать содержимое. Но так круче)
 >
 > Включаем глобальную маршрутизацию в Linux. Лучше именно так, после перезагрузки значение на 0 сбрасываться не будет.
+>
+> Либо echo net.ipv4.ip_forward=1 >> /etc/sysctl.conf, sysctl -p и потом каждый раз после reboot'а прописывать sysctl -p.
 
 ### 🐧 ISP
 
@@ -383,8 +385,7 @@ table ip nat {
 EOT
 systemctl enable --now nftables
 
-echo net.ipv4.ip_forward = 1 > /etc/sysctl.d/99-ipforward.conf
-sysctl --system
+
 cat /proc/sys/net/ipv4/ip_forward  # для проверки
 ```
 

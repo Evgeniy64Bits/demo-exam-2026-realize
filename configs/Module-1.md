@@ -415,7 +415,7 @@ gpasswd -a sshuser wheel
 echo 'sshuser ALL = (root) NOPASSWD: ALL' >> /etc/sudoers
 ```
 
-![zadanie-6](../pictures-m1/
+![zadanie-6](../pictures-m1/6-srv-sshuser-create.png)
 
 ### 🍃 Маршрутизаторы (HQ-RTR, BR-RTR)
 

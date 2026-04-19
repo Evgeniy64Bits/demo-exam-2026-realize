@@ -379,5 +379,5 @@ table ip nat {
 EOT
 ```
 
-![zadanie-5](../pictures-m1/)
+![zadanie-5](../pictures-m1/5-isp-nat.png)
 

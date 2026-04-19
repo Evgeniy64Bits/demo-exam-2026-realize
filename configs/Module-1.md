@@ -386,7 +386,7 @@ EOT
 systemctl enable --now nftables
 
 touch /etc/rc.d/rc.local
-echo -e '#!/bin/bash\necho 1 > /proc/sys/net/ipv4/ip_forward'
+echo -e '#!/bin/bash\necho 1 > /proc/sys/net/ipv4/ip_forward' > /etc/rc.d/rc.local
 chmod +x /etc/rc.d/rc.local
 /etc/rc.d/rc.local
 cat /proc/sys/net/ipv4/ip_forward  # для проверки

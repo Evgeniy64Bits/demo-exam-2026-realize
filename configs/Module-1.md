@@ -344,7 +344,7 @@ exec bash
 timedatectl set-timezone Europe/Moscow
 ```
 
-![zadanie-4](../pictures-m1/)
+![zadanie-4](../pictures-m1/4-isp-timezone.png)
 
 ### 🍃 EcoRouters (HQ-RTR, BR-RTR)
 

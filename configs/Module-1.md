@@ -340,7 +340,7 @@ timedatectl set-timezone Europe/Moscow
 ```
 apt-get update
 apt-get install tzdata -y
-systemctl enable --now tzdata
+exec bash
 timedatectl set-timezone Europe/Moscow
 ```
 

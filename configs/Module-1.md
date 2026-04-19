@@ -477,7 +477,7 @@ exit
 write memory
 ```
 
-![zadanie-8](../pictures-m1/
+![zadanie-8](../pictures-m1/8-hq-rtr-pat.png)
 
 ### 🍃 BR-RTR
 

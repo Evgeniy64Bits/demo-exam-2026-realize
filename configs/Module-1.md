@@ -434,6 +434,12 @@ exit
 
 ## 7. Настройте протокол динамической конфигурации хостов
 
+> [!NOTE]
+> 
+> 
+>
+> 
+
 ### 🍃 HQ-RTR
 
 ```
@@ -468,7 +474,24 @@ exit
 ### 🍃 HQ-RTR
 
 ```
+(config)#ip pool dhcp 1
+range 192.168.100.66-192.168.100.78
+exit
 
+(config)#dhcp-server 1
+pool dhcp 64
+mask 255.255.255.240
+gateway 192.168.100.65
+dns 192.168.100.2
+domain-name au-team.irpo
+exit
+exit
+
+(config)#interface eth3
+dhcp-server 1
+exit
+exit
+#write memory
 ```
 
 ![zadanie-8](../pictures-m1/

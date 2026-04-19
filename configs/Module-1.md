@@ -424,7 +424,8 @@ echo 'sshuser ALL = (root) NOPASSWD: ALL' >> /etc/sudoers
 password P@ssw0rd
 role admin
 exit
+exit
 #write memory
 ```
 
-![zadanie-6](../pictures-m1/
+![zadanie-6](../pictures-m1/6-ecorouter-net-admin-create.png)

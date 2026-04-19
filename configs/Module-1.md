@@ -353,7 +353,7 @@ timedatectl set-timezone Europe/Moscow
 ```
 (config)#ntp timezone utc+3
 exit
-write memory
+#write memory
 ```
 
 ![zadanie-4](../pictures-m1/4-ecorouter-timezone.png)
@@ -403,12 +403,28 @@ cat /proc/sys/net/ipv4/ip_forward  # для проверки
 > [!NOTE]
 > Создаём пользователя с ID 2026, нужным паролем, добавляем в группу wheel - для доступа этому пользователю к
 > привилегированным командам (sudo) и позволяем ему вводить привилегированные команды (sudo) без ввода пароля учетки.
+>
+> На EcoRouter'ах создаём пользователя, назначаем пароль и выдаём ему максимальные привилегии
 
 ### 🐧 HQ-SRV и BR-SRV
 
 ```
 useradd -s /bin/bash -u 2026 sshuser
+echo "sshuser:P@ssw0rd" | chpasswd
+gpasswd -a sshuser wheel
+echo 'sshuser ALL = (root) NOPASSWD: ALL' >> /etc/sudoers
+```
 
+![zadanie-6](../pictures-m1/
+
+### 🍃 Маршрутизаторы (HQ-RTR, BR-RTR)
+
+```
+(config)username net_admin
+password P@ssw0rd
+role admin
+exit
+#write memory
 ```
 
 ![zadanie-6](../pictures-m1/

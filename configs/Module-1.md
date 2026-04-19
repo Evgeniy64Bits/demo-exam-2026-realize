@@ -338,6 +338,7 @@ timedatectl set-timezone Europe/Moscow
 ### 🐧 ISP
 
 ```
+apt-get update
 apt-get install tzdata -y
 systemctl enable --now tzdata
 timedatectl set-timezone Europe/Moscow

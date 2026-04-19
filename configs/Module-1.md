@@ -429,3 +429,31 @@ exit
 ```
 
 ![zadanie-6](../pictures-m1/6-ecorouter-net-admin-create.png)
+
+## 7. Настройте протокол динамической конфигурации хостов для сети в сторону HQ-CLI
+
+### 🍃 HQ-RTR
+
+```
+
+```
+
+![zadanie-7](../pictures-m1/
+
+## 8. Настройка динамической трансляции адресов маршрутизаторах HQ-RTR и BR-RTR
+
+### 🍃 HQ-RTR
+
+```
+
+```
+
+![zadanie-8](../pictures-m1/
+
+### 🍃 BR-RTR
+
+```
+
+```
+
+![zadanie-8](../pictures-m1/

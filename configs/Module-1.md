@@ -379,8 +379,8 @@ table ip nat {
  }
 }
 EOT
-
 systemctl enable --now nftables
+
 echo net.ipv4.ip_forward = 1 > /etc/sysctl.d/99-ipforward.conf
 sysctl --system
 cat /proc/sys/net/ipv4/ip_forward  # для проверки

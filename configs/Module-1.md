@@ -326,3 +326,17 @@ exit
 > Проверьте включён ли адаптер в сторону LAN у HQ-RTR и BR-RTR в WMware - галочка на "Connect at power on". Говорю, потому что у меня эта галочка не была проставлена после ping проверок. Поэтому часть пингов не проходила.
 
 ## 4. Настройте часовой пояс на всех устройствах
+
+### 🐧 ALT Linux (HQ-SRV, BR-SRV, HQ-CLI)
+
+```
+timedatectl set-timezone Europe/Moscow
+```
+
+### 🐧 ISP
+
+```
+apt-get install tzdata -y
+systemctl enable --now tzdata
+timedatectl set-timezone Europe/Moscow
+```

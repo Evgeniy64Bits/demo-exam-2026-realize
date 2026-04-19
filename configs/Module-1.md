@@ -394,6 +394,8 @@ cat /proc/sys/net/ipv4/ip_forward  # для проверки
 
 ![zadanie-5](../pictures-m1/5-isp-nat.png)
 
+![zadanie-5](../pictures-m1/5-isp-nftables-enable.png)
+
 ![zadanie-5](../pictures-m1/5-isp-global-routing.png)
 
 ## 6. Создайте локальные учетные записи на серверах HQ-SRV и BR-SRV

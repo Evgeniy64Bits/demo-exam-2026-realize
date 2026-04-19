@@ -333,6 +333,8 @@ exit
 timedatectl set-timezone Europe/Moscow
 ```
 
+![zadanie-4](../pictures-m1/)
+
 ### 🐧 ISP
 
 ```
@@ -340,3 +342,15 @@ apt-get install tzdata -y
 systemctl enable --now tzdata
 timedatectl set-timezone Europe/Moscow
 ```
+
+![zadanie-4](../pictures-m1/)
+
+### 🍃 EcoRouters (HQ-RTR, BR-RTR)
+
+```
+(config)#ntp timezone utc+3
+exit
+write memory
+```
+
+![zadanie-4](../pictures-m1/)

@@ -333,7 +333,7 @@ exit
 timedatectl set-timezone Europe/Moscow
 ```
 
-![zadanie-4](../pictures-m1/)
+![zadanie-4](../pictures-m1/4-srv-cli-timezone.png)
 
 ### 🐧 ISP
 

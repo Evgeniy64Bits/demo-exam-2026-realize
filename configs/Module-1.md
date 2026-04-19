@@ -51,7 +51,7 @@ br-rtr.au-team.irpo#write memory
 hostnamectl set-hostname hq-srv.au-team.irpo;exec bash
 hostnamectl set-hostname br-srv.au-team.irpo;exec bash
 hostnamectl set-hostname hq-cli.au-team.irpo;exec bash
-hostnamectl set-hostname ISP
+hostnamectl set-hostname ISP;exec bash
 ```
 
 ![zadanie-1](../pictures-m1/1-hostname-alt.png)
@@ -121,7 +121,8 @@ systemctl restart network
 ### 🐧 HQ-SRV
 
 ```
-# options уже корректно настроен
+vim /etc/net/ifaces/ens19/options
+# options уже корректно настроен. Перепроверить не помешает. Если что-то не так - изменяем.
 echo 192.168.100.2/26 > /etc/net/ifaces/ens19/ipv4address
 echo default via 192.168.100.1 > /etc/net/ifaces/ens19/ipv4route
 systemctl restart network
@@ -210,7 +211,7 @@ systemctl restart network
 ### 🐧 BR-SRV
 
 ```
-# options уже корректно настроен
+# options уже корректно настроен. Перепроверьте на всякий - не помешает.
 echo 192.168.50.2/27 > /etc/net/ifaces/ens32/ipv4address
 echo default via 192.168.50.1 > /etc/net/ifaces/ens32/ipv4route
 systemctl restart network

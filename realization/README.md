@@ -204,7 +204,9 @@ https://192.168.1.200:8006
 
 Также я был приятно удивлён тем, что 4-ядерный процессор без Hyper-Threading успешно поддерживал в работе все 6 виртуалок
 
-![variant 2.7](../pictures-r/)
+![variant 2.7](../pictures-r/proxmox-on-4-kernel-cpu.png)
+
+![variant 2.7](../pictures-r/ecorouter-works-fine.png)
 
 ### Переходим к рассмотрению третьего варианта
 

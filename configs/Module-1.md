@@ -626,9 +626,13 @@ systemctl restart sshd
 > Минимальные проверки:
 >
 > nslookup hq-srv.au-team.irpo
+> 
 > nslookup br-srv.au-team.irpo
+> 
 > nslookup moodle.au-team.irpo
+> 
 > nslookup 192.168.50.2
+> 
 > ping br-rtr.au-team.irpo
 
 ### 🐧 HQ-SRV

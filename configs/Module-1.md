@@ -696,8 +696,4 @@ systemctl enable --now dnsmasq
 
 ![zadanie-12](../pictures-m1/12-hq-cli-dnsmasq-test.png)
 
-![zadanie-12](../pictures-m1/
-
-![zadanie-12](../pictures-m1/
-
-![zadanie-12](../pictures-m1/
+### 🎉 Модуль 1 полностью выполнен! 🥳

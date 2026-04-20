@@ -537,4 +537,44 @@ exit
 ## 10. Обеспечьте динамическую маршрутизацию на маршрутизаторах HQ-RTR и BR-RTR
 
 > [!NOTE]
->
+> Используем протокол OSPF. Запускаем его (процесс №1), объявляем сети, устанавливаем OSPF-соседство только через GRE-туннель
+
+### 🍃 HQ-RTR
+
+```
+(config)#router ospf 1
+network 192.168.10.0/30 area 0.0.0.0
+network 192.168.100.0/26 area 0.0.0.0
+network 192.168.100.64/28 area 0.0.0.0
+network 192.168.100.80/29 area 0.0.0.0
+passive-interface default
+no passive-interface tunnel.1
+exit
+exit
+
+#write memory
+# Проверки:
+show ip ospf neighbor
+show ip route ospf
+```
+
+![zadanie-10](../pictures-m1/
+
+### 🍃 BR-RTR
+
+```
+(config)#router ospf 1
+network 192.168.10.0/30 area 0.0.0.0
+network 192.168.50.0/27 area 0.0.0.0
+passive-interface default
+no passive-interface tunnel.1
+exit
+exit
+
+#write memory
+# Проверки:
+show ip ospf neighbor
+show ip route ospf
+```
+
+![zadanie-10](../pictures-m1/

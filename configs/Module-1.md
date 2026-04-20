@@ -558,7 +558,7 @@ show ip ospf neighbor
 show ip route ospf
 ```
 
-![zadanie-10](../pictures-m1/
+![zadanie-10](../pictures-m1/10-hq-rtr-ospf.png)
 
 ### 🍃 BR-RTR
 
@@ -577,4 +577,4 @@ show ip ospf neighbor
 show ip route ospf
 ```
 
-![zadanie-10](../pictures-m1/
+![zadanie-10](../pictures-m1/10-br-rtr-ospf.png)

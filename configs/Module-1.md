@@ -602,6 +602,6 @@ echo Authorized access only > /etc/openssh/banner
 systemctl restart sshd
 ```
 
-![zadanie-11](../pictures-m1/
+![zadanie-11](../pictures-m1/11-srv-ssh-port-auth-tries.png)
 
 ![zadanie-11](../pictures-m1/

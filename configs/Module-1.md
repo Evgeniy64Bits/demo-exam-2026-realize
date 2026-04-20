@@ -614,9 +614,13 @@ systemctl restart sshd
 
 > [!NOTE]
 > dnsmasq — лёгкий DNS-сервер, no-resolv — игнорировать /etc/resolv.conf, no-poll — не отслеживать изменения
+> 
 > no-hosts — не читать /etc/hosts, server=... - прописывание публичных DNS серверов: Yandex, MSK-IX, Google
+> 
 > cache-size — хранит ответы DNS в памяти, all-servers — отправляет запрос всем DNS и берёт самый быстрый
+> 
 > no-negcache — не кэшировать ошибки, host-record=... - прямые A DNS-записи
+> 
 > ptr-record=... - обратные (Связывают IP → домен), псевдонимы (CNAME) используются для сервисов
 
 ### 🐧 HQ-SRV

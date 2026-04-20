@@ -605,4 +605,6 @@ systemctl restart sshd
 
 ![zadanie-11](../pictures-m1/11-srv-ssh-banner-allow-users.png)
 
+![zadanie-11](../pictures-m1/11-srv-ssh-restart.png)
+
 ![zadanie-11](../pictures-m1/

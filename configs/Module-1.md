@@ -647,6 +647,8 @@ systemctl restart sshd
 > nameserver 8.8.8.8
 >
 > Установив dnsmasq - уберём добавленную строчку из /etc/resolv.conf. После поднятия dnsmasq HQ-SRV будет нашим DNS-сервером
+>
+> После настройки, чтобы BR-SRV похватил DNS-сервер в /etc/resolv.conf пропишем nameserver 192.168.100.2
 
 ### 🐧 HQ-SRV
 
@@ -692,7 +694,7 @@ systemctl enable --now dnsmasq
 
 ![zadanie-12](../pictures-m1/12-hq-srv-dnsmasq-config.png)
 
-![zadanie-12](../pictures-m1/
+![zadanie-12](../pictures-m1/12-hq-cli-dnsmasq-test.png)
 
 ![zadanie-12](../pictures-m1/
 

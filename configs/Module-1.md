@@ -642,7 +642,7 @@ systemctl restart sshd
 > 
 > nameserver 8.8.8.8
 >
-> После установки dnsmasq уберём добавленную строчку из /etc/resolv.conf. После поднятия dnsmasq HQ-SRV будет нашим DNS-сервером
+> Установив dnsmasq - уберём добавленную строчку из /etc/resolv.conf. После поднятия dnsmasq HQ-SRV будет нашим DNS-сервером
 
 ### 🐧 HQ-SRV
 

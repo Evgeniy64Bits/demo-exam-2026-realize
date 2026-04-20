@@ -11,6 +11,7 @@
 9. [Между офисами HQ и BR необходимо сконфигурировать ip туннель](#9-между-офисами-hq-и-br-необходимо-сконфигурировать-ip-туннель)
 10. [Обеспечьте динамическую маршрутизацию на маршрутизаторах HQ-RTR и BR-RTR](#10-обеспечьте-динамическую-маршрутизацию-на-маршрутизаторах-hq-rtr-и-br-rtr)
 11. [Настройте безопасный удаленный доступ на серверах HQ-SRV и BR-SRV](#11-настройте-безопасный-удаленный-доступ-на-серверах-hq-srv-и-br-srv)
+12. [Настройте инфраструктуру разрешения доменных имён для офисов HQ и BR](#12-настройте-инфраструктуру-разрешения-доменных имён-для-офисов-hq-и-br)
 
 ## 1. Произведите базовую настройку устройств
 
@@ -596,7 +597,7 @@ MaxAuthTries 2
 Banner /etc/openssh/banner
 # В конце добавлем:
 AllowUsers sshuser
-echo Authorized access only > /etc/openssh/banner
+echo Authorized access only! > /etc/openssh/banner
 
 systemctl restart sshd
 ```
@@ -607,4 +608,9 @@ systemctl restart sshd
 
 ![zadanie-11](../pictures-m1/11-srv-ssh-restart-banner.png)
 
-![zadanie-11](../pictures-m1/
+![zadanie-11](../pictures-m1/11-srv-ssh-test.png)
+
+## 12. Настройте инфраструктуру разрешения доменных имён для офисов HQ и BR
+
+> [!NOTE]
+> 

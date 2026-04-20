@@ -623,6 +623,8 @@ systemctl restart sshd
 > 
 > ptr-record=... - обратные (Связывают IP → домен)
 >
+> Проверить синтаксис можно командой dnsmasq --test
+> 
 > Минимальные проверки:
 >
 > nslookup hq-srv.au-team.irpo

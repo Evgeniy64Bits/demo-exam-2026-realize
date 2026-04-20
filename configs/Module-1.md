@@ -622,5 +622,13 @@ systemctl restart sshd
 > no-negcache — не кэшировать ошибки, host-record=... - прямые A DNS-записи
 > 
 > ptr-record=... - обратные (Связывают IP → домен), псевдонимы (CNAME) используются для сервисов
+>
+> Минимальные проверки:
+>
+> nslookup hq-srv.au-team.irpo
+> nslookup br-srv.au-team.irpo
+> nslookup moodle.au-team.irpo
+> nslookup 192.168.50.2
+> ping br-rtr.au-team.irpo
 
 ### 🐧 HQ-SRV

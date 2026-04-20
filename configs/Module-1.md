@@ -636,3 +636,54 @@ systemctl restart sshd
 > ping br-rtr.au-team.irpo
 
 ### 🐧 HQ-SRV
+
+```
+apt-get update
+apt-get install dnsmasq -y
+echo 'OPTIONS=""' > /etc/sysconfig/dnsmasq
+service network restart
+
+cat <<'EOT' > /etc/dnsmasq.conf
+no-resolv
+no-poll
+no-hosts
+
+server=77.88.8.7
+server=77.88.8.3
+server=195.208.4.1
+server=195.208.5.1
+server=8.8.8.8
+
+cache-size=1000
+all-servers
+no-negcache
+
+host-record=hq-rtr.au-team.irpo,192.168.100.1
+host-record=hq-srv.au-team.irpo,192.168.100.2
+host-record=hq-cli.au-team.irpo,192.168.100.66
+
+host-record=br-rtr.au-team.irpo,192.168.50.1
+host-record=br-srv.au-team.irpo,192.168.50.2
+
+ptr-record=1.100.168.192.in-addr.arpa,hq-rtr.au-team.irpo
+ptr-record=2.100.168.192.in-addr.arpa,hq-srv.au-team.irpo
+ptr-record=66.100.168.192.in-addr.arpa,hq-cli.au-team.irpo
+
+cname=moodle.au-team.irpo,hq-rtr.au-team.irpo
+cname=wiki.au-team.irpo,hq-rtr.au-team.irpo
+EOT
+
+systemctl enable --now dnsmasq
+```
+
+![zadanie-12](../pictures-m1/
+
+![zadanie-12](../pictures-m1/
+
+![zadanie-12](../pictures-m1/
+
+![zadanie-12](../pictures-m1/
+
+![zadanie-12](../pictures-m1/
+
+![zadanie-12](../pictures-m1/

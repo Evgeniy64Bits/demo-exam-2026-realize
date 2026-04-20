@@ -621,7 +621,7 @@ systemctl restart sshd
 > 
 > no-negcache — не кэшировать ошибки, host-record=... - прямые A DNS-записи
 > 
-> ptr-record=... - обратные (Связывают IP → домен), псевдонимы (CNAME) используются для сервисов
+> ptr-record=... - обратные (Связывают IP → домен)
 >
 > Минимальные проверки:
 >
@@ -629,7 +629,9 @@ systemctl restart sshd
 > 
 > nslookup br-srv.au-team.irpo
 > 
-> nslookup moodle.au-team.irpo
+> nslookup docker.au-team.irpo
+>
+> nslookup web.au-team.irpo
 > 
 > nslookup 192.168.50.2
 > 
@@ -670,16 +672,15 @@ no-negcache
 host-record=hq-rtr.au-team.irpo,192.168.100.1
 host-record=hq-srv.au-team.irpo,192.168.100.2
 host-record=hq-cli.au-team.irpo,192.168.100.66
-
 host-record=br-rtr.au-team.irpo,192.168.50.1
 host-record=br-srv.au-team.irpo,192.168.50.2
+
+host-record=docker.au-team.irpo,172.16.4.1
+host-record=web.au-team.irpo,172.16.5.1
 
 ptr-record=1.100.168.192.in-addr.arpa,hq-rtr.au-team.irpo
 ptr-record=2.100.168.192.in-addr.arpa,hq-srv.au-team.irpo
 ptr-record=66.100.168.192.in-addr.arpa,hq-cli.au-team.irpo
-
-cname=moodle.au-team.irpo,hq-rtr.au-team.irpo
-cname=wiki.au-team.irpo,hq-rtr.au-team.irpo
 EOT
 
 systemctl enable --now dnsmasq

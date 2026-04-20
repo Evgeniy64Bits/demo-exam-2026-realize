@@ -500,7 +500,17 @@ write memory
 ### 🍃 HQ-RTR
 
 ```
+(config)#ip route 0.0.0.0/0 172.16.4.1 description default
 
+(config)#interface tunnel.1
+ip add 192.168.10.1/30
+ip tunnel 172.16.4.2 172.16.5.2 mode gre
+ip ospf authentication
+ip ospf authentication-key P@$$word
+exit
+exit
+
+#write memory
 ```
 
 ![zadanie-9](../pictures-m1/
@@ -508,7 +518,17 @@ write memory
 ### 🍃 BR-RTR
 
 ```
+(config)#ip route 0.0.0.0/0 172.16.5.1 description default
 
+(config)#interface tunnel.1
+ip add 192.168.10.2/30
+ip tunnel 172.16.5.2 172.16.4.2 mode gre
+ip ospf authentication
+ip ospf authentication-key P@$$word
+exit
+exit
+
+#write memory
 ```
 
 ![zadanie-9](../pictures-m1/

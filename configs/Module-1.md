@@ -634,6 +634,8 @@ systemctl restart sshd
 > nslookup web.au-team.irpo
 > 
 > nslookup 192.168.50.2
+>
+> ping hq-rtr.au-team.irpo
 > 
 > ping br-rtr.au-team.irpo
 

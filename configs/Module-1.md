@@ -635,6 +635,15 @@ systemctl restart sshd
 > 
 > ping br-rtr.au-team.irpo
 
+> [!WARNING]
+> apt-get update работать не будет, так как ещё нет настроенного dns-сервера, который будет резолвить имена. Для того чтобы установить dnsmasq временно впишем google dns в /etc/resolv.conf на HQ-SRV:
+> 
+> vim /etc/resolv.conf
+> 
+> nameserver 8.8.8.8
+>
+> После установки dnsmasq уберём добавленную строчку из /etc/resolv.conf. После поднятия dnsmasq HQ-SRV будет нашим DNS-сервером
+
 ### 🐧 HQ-SRV
 
 ```

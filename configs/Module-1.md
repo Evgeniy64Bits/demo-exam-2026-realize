@@ -583,4 +583,25 @@ show ip route ospf
 ## 11. Настройте безопасный удаленный доступ на серверах HQ-SRV и BR-SRV
 
 > [!NOTE]
-> 
+> Выставлем в конфигурационном файле подключение по ssh только на 2026-ой порт, кол-во попыток аутентификации - 2, вписываем и создаём отображающийся при подключении баннер. Разрешаем подключаться только под пользователем sshuser.
+>
+> Проверяем. с HQ-SRV - ssh sshuser@192.168.50.2 -p 2026. с BR-SRV - ssh sshuser@192.168.100.2 -p 2026
+
+### 🐧 HQ-SRV и BR-SRV
+
+```
+vim /etc/openssh/sshd_config
+# Раскомментируем и меняем эти строчки:
+Port 2026
+MaxAuthTries 2
+Banner /etc/openssh/banner
+# В конце добавлем:
+AllowUsers sshuser
+echo Authorized access only > /etc/openssh/banner
+
+systemctl restart sshd
+```
+
+![zadanie-11](../pictures-m1/
+
+![zadanie-11](../pictures-m1/

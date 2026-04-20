@@ -513,7 +513,7 @@ exit
 #write memory
 ```
 
-![zadanie-9](../pictures-m1/
+![zadanie-9](../pictures-m1/9-hq-rtr-ip-route-gre.png)
 
 ### 🍃 BR-RTR
 
@@ -531,4 +531,4 @@ exit
 #write memory
 ```
 
-![zadanie-9](../pictures-m1/
+![zadanie-9](../pictures-m1/9-br-rtr-ip-route-gre.png)

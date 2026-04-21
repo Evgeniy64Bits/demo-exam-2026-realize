@@ -19,15 +19,17 @@
 ## 1. Установка Яндекс Браузера на HQ-CLI
 
 > [!NOTE]
->
+> Установим простым способом через официальные репозитории ALT
 
 ### 🐧 HQ-CLI
 
 ```
-
+apt-get update
+apt-get install yandex-browser-stable -y
+yandex-browser-stable    #запускаем под обычным пользователем (не root)
 ```
 
-![zadanie-1](../pictures-m2/)
+![zadanie-1](../pictures-m2/1-hq-cli-yandex-browser.png)
 
 ## 2. Настройка службы сетевого времени (chrony) на ISP
 

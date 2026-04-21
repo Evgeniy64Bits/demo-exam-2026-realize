@@ -121,6 +121,8 @@ chronyc sources
 date
 ```
 
+![zadanie-2](../pictures-m2/2-br-srv-chrony-conf.png)
+
 ### 🍃 BR-RTR
 
 ```

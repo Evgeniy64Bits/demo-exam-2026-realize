@@ -219,7 +219,7 @@ mount 192.168.100.2:/raid/nfs /mnt/nfs
 
 vim /etc/fstab
 # добавляем строку (жмём tab после каждого параметра):
-192.168.100.2:/raid/nfs /mnt/nfs nfs defaults,_netdev 0 0
+192.168.100.2:/raid/nfs  /mnt/nfs  nfs  defaults,_netdev  0  0
 mount -av
 ```
 

@@ -170,7 +170,7 @@ lsblk
 
 ![zadanie-3](../pictures-m2/3-hq-srv-fstab.png)
 
-![zadanie-3](../pictures-m2/)
+![zadanie-3](../pictures-m2/3-hq-srv-auto-mount-check.png)
 
 ## 4. Настройка NFS-сервера на HQ-SRV
 

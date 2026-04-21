@@ -16,6 +16,8 @@
 10. [Настройка web-based аутентификации на ISP](#10-настройка-web-based-аутентификации-на-isp)
 11. [Настройка Samba DC на BR-SRV](#11-настройка-samba-dc-на-br-srv)
 
+![ip-in-proxmox](../pictures-m2/ip-proxmox.png)
+
 ## 1. Установка Яндекс Браузера на HQ-CLI
 
 > [!NOTE]

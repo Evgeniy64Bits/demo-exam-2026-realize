@@ -215,17 +215,21 @@ exportfs -rav
 
 ```
 mkdir /mnt/nfs
-mount 192.168.100.2:/raid/nfs /mnt/nfs
+mount 192.168.1.10:/raid/nfs /mnt/nfs
 
 vim /etc/fstab
 # добавляем строку (жмём tab после каждого параметра):
-192.168.100.2:/raid/nfs  /mnt/nfs  nfs  defaults,_netdev  0  0
+192.168.1.10:/raid/nfs  /mnt/nfs  nfs  defaults,_netdev  0  0
 mount -av
 ```
 
-![zadanie-4](../pictures-m2/)
+![zadanie-4](../pictures-m2/4-hq-cli-mount-network-dir.png)
 
-![zadanie-4](../pictures-m2/)
+![zadanie-4](../pictures-m2/4-hq-cli-fstab.png)
+
+![zadanie-4](../pictures-m2/4-hq-cli-auto-mount-dir-and-check.png)
+
+![zadanie-4](../pictures-m2/4-hq-srv-nfs-works-check.png)
 
 ## 5. Развёртывание веб-приложения на HQ-SRV
 

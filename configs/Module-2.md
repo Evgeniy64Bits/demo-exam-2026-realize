@@ -141,15 +141,36 @@ show ntp date
 ## 3. Конфигурация файлового хранилища на HQ-SRV
 
 > [!NOTE]
-> Создаём массив RAID 0 из двух дисков (они уже подключены). Форматируем под файловую систему ext4. Автоматически монтируем массив в каталог /raid
+> Создаём массив RAID 0 из двух дисков (они уже подключены к ВМ). Форматируем под файловую систему ext4. Автоматически монтируем массив в каталог /raid
 >
-> mdadm предустановлен на HQ-SRV. Проверить - rpm -qa | grep mdadm
+> mdadm предустановлен на HQ-SRV. Проверить: rpm -qa | grep mdadm
 
+### 🐧 HQ-SRV
 
+```
+mdadm --create /dev/md0 -l0 -n 2 /dev/sdb /dev/sdc
+mkfs.ext4 /dev/md0
+
+# добавляем информацию о RAID-массиве:
+echo "DEVICE partitions" > /etc/mdadm.conf
+mdadm --detail --scan >> /etc/mdadm.conf
+
+mkdir /raid
+vim /etc/fstab
+# добавляем строчку (жмём tab после каждого параметра):
+/dev/md0	/raid	ext4	defaults	0	0
+mount -av
+
+# проверки:
+df -h
+lsblk
+```
 
 ![zadanie-3](../pictures-m2/)
 
+![zadanie-3](../pictures-m2/)
 
+![zadanie-3](../pictures-m2/)
 
 ## 4. Настройка NFS-сервера на HQ-SRV
 

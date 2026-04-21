@@ -141,11 +141,9 @@ show ntp date
 ## 3. Конфигурация файлового хранилища на HQ-SRV
 
 
-![zadanie-4](../pictures-m2/)
 
 
-
-
+![zadanie-3](../pictures-m2/)
 
 
 
@@ -169,7 +167,7 @@ echo "/raid/nfs 192.168.2.10/28(rw,sync,no_subtree_check)" >> /etc/exports
 exportfs -rav
 ```
 
-![zadanie-3](../pictures-m2/)
+![zadanie-4](../pictures-m2/4-hq-srv-nfs-install.png)
 
 ## 5. Развёртывание веб-приложения на HQ-SRV
 

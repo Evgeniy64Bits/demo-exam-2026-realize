@@ -136,7 +136,7 @@ show ntp status
 show ntp date
 ```
 
-![zadanie-2](../pictures-m2/)
+![zadanie-2](../pictures-m2/2-br-rtr-ntp.png)
 
 ## 3. Настройка NFS-сервера на HQ-SRV
 

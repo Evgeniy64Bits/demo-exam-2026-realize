@@ -143,7 +143,20 @@ show ntp date
 > [!NOTE]
 > NFS (Network File System) — это протокол распределённой файловой системы, который позволяет компьютерам в сети обмениваться файлами так, будто они расположены локально, хотя физически находятся на сервере (физическом или виртуальном). С помощью NFS можно монтировать удалённую директорию на локальном компьютере, делая её доступной как локальные файлы.
 
+### 🐧 HQ-SRV
 
+```
+apt-get install nfs-server -y
+systemctl enable --now nfs-server
+
+mkdir -p /raid/nfs
+chmod 777 /raid/nfs
+
+# Добавляем строку в /etc/exports:
+echo "/raid/nfs 192.168.2.10/28(rw,sync,no_subtree_check)" >> /etc/exports
+
+exportfs -rav
+```
 
 ![zadanie-3](../pictures-m2/)
 

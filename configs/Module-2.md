@@ -168,7 +168,7 @@ lsblk
 
 ![zadanie-3](../pictures-m2/3-hq-srv-mdadm-raid.png)
 
-![zadanie-3](../pictures-m2/)
+![zadanie-3](../pictures-m2/3-hq-srv-fstab.png)
 
 ![zadanie-3](../pictures-m2/)
 

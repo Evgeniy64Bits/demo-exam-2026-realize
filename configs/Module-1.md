@@ -66,7 +66,7 @@ hostnamectl set-hostname ISP;exec bash
 
 ## 2. Настройка IP-адресов
 
-(Согласно таблице ниже)
+(Согласно таблице ниже, условия задания соблюдены)
 
 ![ip-set-word-table](../pictures-m1/ip-set.png)
 

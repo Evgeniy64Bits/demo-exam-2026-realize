@@ -327,7 +327,7 @@ https://github.com/PavelAF/PVE-ASDaC-BASH
 
 ## Выбранный способ
 
-Я буду показывать реализацию через виртуальные машины в VMware Workstation.
+Я буду показывать реализацию через виртуальные машины в VMware Workstation для Модуля 1.
 
 Это:
 

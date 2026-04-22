@@ -206,7 +206,9 @@ https://192.168.1.200:8006
 
 ![variant 2.7](../pictures-r/proxmox-on-4-kernel-cpu.png)
 
-![variant 2.7](../pictures-r/ecorouter-works-fine.png)
+![variant 2.8](../pictures-r/ecorouter-works-fine.png)
+
+![variant 2.9](../mydocs/dancing-mita-shows-ecorouter-launch-to-login-on-laptop-screen.webp)
 
 ### Переходим к рассмотрению третьего варианта
 

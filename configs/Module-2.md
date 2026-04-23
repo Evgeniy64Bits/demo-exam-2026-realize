@@ -260,7 +260,34 @@ mount -av
 >
 > 7) Открытие веб-приложения с клиента
 
+Подключаем Additional.iso к HQ-SRV и BR-SRV (для дальнейшего задания - развёртывание веб-приложения в Docker). Перед подключением выключаем виртуалки.
 
+![zadanie-5](../pictures-m2/5-srv-add-additional-in-proxmox.png)
+
+После upload'а на хранилище, добавляем CD/DVD устройство и подключаем к нему Additional.iso
+
+![zadanie-5](../pictures-m2/5-srv-add-cd-dvd-to-vm.png)
+
+![zadanie-5](../pictures-m2/5-srv-add-additional-to-vm.png)
+
+Запускаем обратно виртуалки и готово. Проверить - lsblk
+
+```
+apt-get install httpd2 apache2-mod_php8.1 php8.1 php8.1-mysqlnd php8.1-mysqli -y
+systemctl enable --now httpd2
+
+apt-get install mariadb-server -y
+systemctl enable --now mariadb
+
+mysql -u root
+CREATE DATABASE webdb;
+CREATE USER 'web'@'localhost' IDENTIFIED BY 'P@ssw0rd';
+GRANT ALL PRIVILEGES ON webdb.* TO 'web'@'localhost';
+FLUSH PRIVILEGES;
+
+
+
+```
 
 
 

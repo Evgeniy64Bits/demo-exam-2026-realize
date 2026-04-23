@@ -285,6 +285,7 @@ CREATE DATABASE webdb;
 CREATE USER 'web'@'localhost' IDENTIFIED BY 'P@ssw0rd';
 GRANT ALL PRIVILEGES ON webdb.* TO 'web'@'localhost';
 FLUSH PRIVILEGES;
+exit
 
 mkdir /mnt/cdrom
 mount /dev/sr0 /mnt/cdrom
@@ -311,7 +312,7 @@ http://192.168.100.2  #открываем сайт через браузер с 
 
 ![zadanie-5](../pictures-m2/5-hq-srv-install-mariadb.png)
 
-![zadanie-5](../pictures-m2/)
+![zadanie-5](../pictures-m2/5-hq-srv-create-database.png)
 
 ![zadanie-5](../pictures-m2/)
 

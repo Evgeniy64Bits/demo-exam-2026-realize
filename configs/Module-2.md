@@ -246,7 +246,7 @@ mount -av
 > 
 > Весь процесс можно разделить на 7 этапов:
 >
-> 1) Установка Apache
+> 1) Установка Apache и PHP
 >
 > 2) Установка MariaDB
 >
@@ -273,6 +273,7 @@ mount -av
 Запускаем обратно виртуалки и готово. Проверить - lsblk
 
 ```
+apt-get update
 apt-get install httpd2 apache2-mod_php8.1 php8.1 php8.1-mysqlnd php8.1-mysqli -y
 systemctl enable --now httpd2
 
@@ -285,15 +286,34 @@ CREATE USER 'web'@'localhost' IDENTIFIED BY 'P@ssw0rd';
 GRANT ALL PRIVILEGES ON webdb.* TO 'web'@'localhost';
 FLUSH PRIVILEGES;
 
+mkdir /mnt/cdrom
+mount /dev/sr0 /mnt/cdrom
+ls /mnt/cdrom/web
+mysql -u root webdb < /mnt/cdrom/web/dump.sql
 
+cp /mnt/cdrom/web/index.php /var/www/html/
+cp /mnt/cdrom/web/logo.png /var/www/html/
+chown -R apache2:apache2 /var/www/html
+chmod -R 777 /var/www/html
 
+vim /var/www/html/index.php
+# указываем:
+$servername = "localhost";
+$username = "web";
+$password = "P@ssw0rd";
+$dbname = "webdb";
+systemctl restart httpd2
+
+http://192.168.100.2  #открываем сайт через браузер с клиента
 ```
 
+![zadanie-5](../pictures-m2/5-hq-srv-install-apache.png)
 
+![zadanie-5](../pictures-m2/5-hq-srv-install-mariadb.png)
 
+![zadanie-5](../pictures-m2/)
 
-
-
+![zadanie-5](../pictures-m2/)
 
 ![zadanie-5](../pictures-m2/)
 

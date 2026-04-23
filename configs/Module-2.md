@@ -404,7 +404,7 @@ ansible all -m ping
 
 ![zadanie-6](../pictures-m2/6-br-srv-ansible-inventory.png)
 
-![zadanie-6](../pictures-m2/)
+![zadanie-6](../pictures-m2/6-br-srv-ansiblle-successful-pong-answer.png)
 
 ## 7. Развёртывание веб-приложения в Docker на BR-SRV
 

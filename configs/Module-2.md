@@ -305,7 +305,7 @@ $password = "P@ssw0rd";
 $dbname = "webdb";
 systemctl restart httpd2
 
-http://192.168.100.2  #открываем сайт через браузер с клиента
+http://192.168.1.10  #открываем сайт через браузер с клиента
 ```
 
 ![zadanie-5](../pictures-m2/5-hq-srv-install-apache.png)
@@ -314,9 +314,13 @@ http://192.168.100.2  #открываем сайт через браузер с 
 
 ![zadanie-5](../pictures-m2/5-hq-srv-create-database.png)
 
-![zadanie-5](../pictures-m2/)
+![zadanie-5](../pictures-m2/5-hq-srv-import-db-copy-site-files.png)
 
-![zadanie-5](../pictures-m2/)
+![zadanie-5](../pictures-m2/5-hq-srv-config-connection-to-db.png)
+
+![zadanie-5](../pictures-m2/5-hq-srv-restart-httpd2.png)
+
+![zadanie-5](../pictures-m2/5-hq-cli-site-open-work-test.png)
 
 ## 6. Настройка Ansible на BR-SRV
 

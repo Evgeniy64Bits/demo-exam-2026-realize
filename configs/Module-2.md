@@ -372,7 +372,7 @@ show security-profile
 
 ![zadanie-6](../pictures-m2/6-ecorouter-ssh-allow.png)
 
-После проверяем подключение по ssh. Эта проверка необязательна.
+После проверяем подключение по ssh. Для HQ-SRV и HQ-CLI проверка обязательна - на вопрос "Are you sure you want to continue connecting?" пишем: yes. Это важно — убирает "failed!" у ansible. Логиниться не обязательно
 
 ### 🐧 BR-SRV
 

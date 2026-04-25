@@ -462,7 +462,7 @@ docker load -i mariadb_latest.tar
 cd
 mkdir /usr/docker
 vim /usr/docker/docker-compose.yaml
-# прописываем, в названии контейнера в задании скорее всего опечатка, поэтому оставлю testapp
+# прописываем
 services:
   testapp:
     image: site:latest
@@ -531,7 +531,11 @@ http://192.168.1.10:8080/
 ### 🍃 HQ-RTR
 
 ```
+(config)#ip nat source static tcp 192.168.1.10 80 172.16.4.4 8080
+(config)#ip nat source static tcp 192.168.1.10 2026 172.16.4.4 2026
 
+exit
+#write memory
 ```
 
 ![zadanie-8](../pictures-m2/)
@@ -539,7 +543,11 @@ http://192.168.1.10:8080/
 ### 🍃 BR-RTR
 
 ```
+(config)#ip nat source static tcp 192.168.3.10 8080 172.16.5.5 8080
+(config)#ip nat source static tcp 192.168.3.10 2026 172.16.5.5 2026
 
+exit
+#write memory
 ```
 
 ![zadanie-8](../pictures-m2/)
@@ -550,6 +558,12 @@ http://192.168.1.10:8080/
 apt-get update
 apt-get install curl -y
 
+# проверяем подключение к сервисам
+curl http://172.16.5.5:8080
+curl http://172.16.4.4:8080
+
+ssh sshuser@172.16.4.4 -p 2026
+ssh sshuser@172.16.5.5 -p 2026
 ```
 
 ![zadanie-8](../pictures-m2/)

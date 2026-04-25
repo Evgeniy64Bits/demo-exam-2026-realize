@@ -408,6 +408,98 @@ ansible all -m ping
 
 ## 7. Развёртывание веб-приложения в Docker на BR-SRV
 
+> [!NOTE]
+> Docker используется для быстрого и изолированного развёртывания приложений.
+>
+> В данном случае с его помощью поднимается стек из двух контейнеров: веб-приложение (testapp) и база данных (db)
+>
+> Это позволяет:
+>
+> не устанавливать сервисы (apache и mariadb) напрямую в систему
+>
+> обеспечить одинаковую работу приложения в любой среде
+>
+> быстро развернуть связку web + database
+>
+> обеспечить доступ к приложению извне через указанный порт
+>
+> Docker упрощает настройку и делает развёртывание одинаково воспроизводимым
+>
+> Этапы выполнения:
+>
+> 1) Установка Docker
+>
+> 2) Запуск и автозапуск Docker
+>
+> 3) Монтируем ISO
+>
+> 4) Импортируем образы в Docker
+>
+> 5) Создаём docker-compose.yml
+>
+> 6) Запускаем стек
+>
+> 7) Проверяем доступ
+
+### 🐧 BR-SRV
+
+```
+apt-get update
+apt-get install -y docker-engine docker-compose
+systemctl enable --now docker
+
+lsblk
+mkdir /mnt/cdrom
+mount /dev/sr0 /mnt/cdrom
+ls /mnt/cdrom/docker
+
+cd /mnt/cdrom/docker
+docker load -i site_latest.tar
+docker load -i mariadb_latest.tar
+
+cd
+mkdir /usr/docker
+vim /usr/docker/docker-compose.yaml
+# прописываем, в названии контейнера в задании скорее всего опечатка, поэтому оставлю testapp
+services:
+  testapp:
+    image: site:latest
+    container_name: testapp
+    ports:
+      - "8080:8000"
+    environment:
+      DB_TYPE: maria
+      DB_HOST: db
+      DB_NAME: testdb
+      DB_PORT: 3306
+      DB_USER: test
+      DB_PASS: P@ssw0rd
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.11
+    container_name: db
+    restart: always
+    environment:
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: test
+      MARIADB_PASSWORD: P@ssw0rd
+      MARIADB_ROOT_PASSWORD: rootpass
+
+
+
+
+
+
+```
+
+### 🐧 HQ-CLI
+
+```
+
+```
+
 
 ![zadanie-7](../pictures-m2/)
 

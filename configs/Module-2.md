@@ -487,19 +487,23 @@ services:
       MARIADB_PASSWORD: P@ssw0rd
       MARIADB_ROOT_PASSWORD: rootpass
 
-
-
-
-
-
+cd /usr/docker
+docker compose up -d
+# проверить контейнеры
+docker ps -a
 ```
+
+![zadanie-7](../pictures-m2/)
+
+![zadanie-7](../pictures-m2/)
+
+![zadanie-7](../pictures-m2/)
 
 ### 🐧 HQ-CLI
 
 ```
-
+http://192.168.1.10:8080/
 ```
-
 
 ![zadanie-7](../pictures-m2/)
 

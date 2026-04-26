@@ -194,6 +194,7 @@ lsblk
 ### 🐧 HQ-SRV
 
 ```
+apt-get update
 apt-get install nfs-server -y
 systemctl enable --now nfs-server
 

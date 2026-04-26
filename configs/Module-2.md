@@ -273,6 +273,8 @@ mount -av
 
 Запускаем обратно виртуалки и готово. Проверить - lsblk
 
+### 🐧 HQ-SRV
+
 ```
 apt-get update
 apt-get install httpd2 apache2-mod_php8.1 php8.1 php8.1-mysqlnd php8.1-mysqli -y
@@ -305,9 +307,14 @@ $username = "web";
 $password = "P@ssw0rd";
 $dbname = "webdb";
 systemctl restart httpd2
+```
 
+### 🐧 HQ-CLI
+
+```
 http://192.168.1.10  #открываем сайт через браузер с клиента
 ```
+
 
 ![zadanie-5](../pictures-m2/5-hq-srv-install-apache.png)
 

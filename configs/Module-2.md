@@ -516,7 +516,7 @@ docker ps -a
 http://192.168.3.10:8080/
 ```
 
-![zadanie-7](../pictures-m2/)
+![zadanie-7](../pictures-m2/7-hq-cli-docker-check-web-app.png)
 
 ## 8. Настройка статической трансляции портов на маршрутизаторах
 

@@ -462,7 +462,7 @@ docker load -i mariadb_latest.tar
 
 cd
 mkdir /usr/docker
-vim /usr/docker/docker-compose.yaml
+vim /usr/docker/docker-compose.yml
 # прописываем
 services:
   testapp:

@@ -1,4 +1,4 @@
-# 📘 Модуль 2 — Пояснения к сетевому администрированию
+<img width="769" height="634" alt="image" src="https://github.com/user-attachments/assets/471660eb-510b-4b16-98ef-1b88542e1577" /># 📘 Модуль 2 — Пояснения к сетевому администрированию
 
 Покажу этот модуль на Proxmox, отличия с VMware Workstation будут только в интерфейсах (ens18/19, te0/1, ...)
 
@@ -496,16 +496,16 @@ docker compose up -d
 docker ps -a
 ```
 
-![zadanie-7](../pictures-m2/)
+![zadanie-7](../pictures-m2/7-br-srv-docker-load-images.png)
 
-![zadanie-7](../pictures-m2/)
+![zadanie-7](../pictures-m2/7-br-srv-docker-compose-file.png)
 
-![zadanie-7](../pictures-m2/)
+![zadanie-7](../pictures-m2/7-br-srv-docker-up-containers.png)
 
 ### 🐧 HQ-CLI
 
 ```
-http://192.168.1.10:8080/
+http://192.168.3.10:8080/
 ```
 
 ![zadanie-7](../pictures-m2/)

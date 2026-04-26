@@ -475,6 +475,7 @@ services:
   testapp:
     image: site:latest
     container_name: testapp
+    restart: always
     ports:
       - "8080:8000"
     environment:

@@ -1,4 +1,4 @@
-<img width="769" height="634" alt="image" src="https://github.com/user-attachments/assets/471660eb-510b-4b16-98ef-1b88542e1577" /># 📘 Модуль 2 — Пояснения к сетевому администрированию
+📘 Модуль 2 — Пояснения к сетевому администрированию
 
 Покажу этот модуль на Proxmox, отличия с VMware Workstation будут только в интерфейсах (ens18/19, te0/1, ...)
 

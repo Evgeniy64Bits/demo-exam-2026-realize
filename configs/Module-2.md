@@ -547,7 +547,7 @@ exit
 #write memory
 ```
 
-![zadanie-8](../pictures-m2/)
+![zadanie-8](../pictures-m2/8-hq-rtr-dnat.png)
 
 ### 🍃 BR-RTR
 
@@ -559,7 +559,7 @@ exit
 #write memory
 ```
 
-![zadanie-8](../pictures-m2/)
+![zadanie-8](../pictures-m2/8-br-rtr-dnat.png)
 
 ### 🐧 ISP
 
@@ -575,7 +575,7 @@ ssh sshuser@172.16.4.4 -p 2026
 ssh sshuser@172.16.5.5 -p 2026
 ```
 
-![zadanie-8](../pictures-m2/)
+![zadanie-8](../pictures-m2/8-isp-dnat-check-work.png)
 
 ## 9. Настройка nginx как обратного прокси на ISP
 

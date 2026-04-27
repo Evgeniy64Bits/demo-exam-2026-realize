@@ -657,6 +657,39 @@ http://docker.au-team.irpo
 >
 > При обращении к ресурсу nginx запрашивает логин и пароль, сверяет их с файлом /etc/nginx/.htpasswd и только после успешной проверки перенаправляет пользователя на внутренний веб-сервер.
 
+### 🐧 ISP
+
+```
+apt-get update
+apt-get install apache2-htpasswd
+
+#создаём пользователя утилитой htpasswd
+htpasswd -c /etc/nginx/.htpasswd WEB
+
+vim /etc/nginx/sites-enabled.d/reverse.conf
+# изменяем блок с web.au-team.irpo, после строчки server_name добавим:
+auth_basic "Restricted Access";
+auth_basic_user_file /etc/nginx/.htpasswd;
+
+nginx -t
+systemctl restart nginx
+```
+
+![zadanie-10](../pictures-m2/)
+
+![zadanie-10](../pictures-m2/)
+
+![zadanie-10](../pictures-m2/)
+
+### 🐧 HQ-CLI
+
+```
+http://web.au-team.irpo
+
+# теперь получаем окно с авторизацией
+# введём неправильные данные - доступа не будет
+# введём правильные данные - откроется сайт
+```
 
 ![zadanie-10](../pictures-m2/)
 

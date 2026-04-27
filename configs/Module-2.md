@@ -603,7 +603,7 @@ vim /etc/nginx/conf.d/reverse.conf
 # создаём конфиг
 server {
     listen 80;
-    server_name web.au-team.irpo;
+    server_name docker.au-team.irpo;
 
     location / {
         proxy_pass http://172.16.4.4:8080;
@@ -614,7 +614,7 @@ server {
 
 server {
     listen 80;
-    server_name docker.au-team.irpo;
+    server_name web.au-team.irpo;
 
     location / {
         proxy_pass http://172.16.5.5:8080;

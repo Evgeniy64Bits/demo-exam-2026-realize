@@ -661,7 +661,7 @@ http://docker.au-team.irpo
 
 ```
 apt-get update
-apt-get install apache2-htpasswd
+apt-get install apache2-htpasswd -y
 
 #создаём пользователя утилитой htpasswd
 htpasswd -c /etc/nginx/.htpasswd WEB

@@ -640,9 +640,9 @@ http://web.au-team.irpo
 http://docker.au-team.irpo
 ```
 
-![zadanie-9](../pictures-m2/)
+![zadanie-9](../pictures-m2/9-hq-cli-reverse-proxy-check-work-1.png)
 
-![zadanie-9](../pictures-m2/)
+![zadanie-9](../pictures-m2/9-hq-cli-reverse-proxy-check-work-2.png)
 
 ## 10. Настройка web-based аутентификации на ISP
 

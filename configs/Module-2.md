@@ -665,6 +665,7 @@ apt-get install apache2-htpasswd -y
 
 #создаём пользователя утилитой htpasswd
 htpasswd -c /etc/nginx/.htpasswd WEB
+# задаём пароль P@ssw0rd
 
 vim /etc/nginx/sites-enabled.d/reverse.conf
 # изменяем блок с web.au-team.irpo, после строчки server_name добавим:

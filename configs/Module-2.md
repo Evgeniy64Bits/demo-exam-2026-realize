@@ -602,7 +602,7 @@ mkdir /etc/nginx/conf.d
 vim /etc/nginx/conf.d/reverse.conf
 # создаём конфиг
 server {
-    listen 80;
+    listen 172.16.5.1:80;
     server_name web.au-team.irpo;
 
     location / {
@@ -613,7 +613,7 @@ server {
 }
 
 server {
-    listen 8080;
+    listen 172.16.4.1:80;
     server_name docker.au-team.irpo;
 
     location / {
@@ -631,7 +631,7 @@ systemctl restart nginx
 
 ![zadanie-9](../pictures-m2/9-isp-nginx-config.png)
 
-![zadanie-9](../pictures-m2/)
+![zadanie-9](../pictures-m2/9-isp-nginx-check-syntax-and-restart.png)
 
 ### 🐧 HQ-CLI
 

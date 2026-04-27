@@ -91,6 +91,8 @@ IP-адресация готова. Останется занести данны
 
 <img width="914" height="440" alt="image" src="https://github.com/user-attachments/assets/ad4afcb5-ac4b-44d2-a2e3-1c9ca2e34a87" />
 
+---
+
 <img width="907" height="350" alt="image" src="https://github.com/user-attachments/assets/ca982f59-527b-4ed6-89a8-7c92e0c27b28" />
 
 Тем самым, мы обеспечили минимальное количество адресов, которое должно быть

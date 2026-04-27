@@ -629,7 +629,7 @@ nginx -t
 systemctl restart nginx
 ```
 
-![zadanie-9](../pictures-m2/)
+![zadanie-9](../pictures-m2/9-isp-nginx-config.png)
 
 ![zadanie-9](../pictures-m2/)
 
@@ -639,7 +639,6 @@ systemctl restart nginx
 # в строке браузера вводим:
 http://web.au-team.irpo
 http://docker.au-team.irpo
-
 ```
 
 ![zadanie-9](../pictures-m2/)

@@ -38,9 +38,13 @@ HQ-RTR -> ISP: 172.16.1.2/28
 
 <img width="911" height="199" alt="image" src="https://github.com/user-attachments/assets/1062f951-2027-4105-b9d3-4b9aecf5a375" />
 
+---
+
 Нажимаем "Вычислить". Получаем готовую табличку для VLAN 100, VLAN 200 и VLAN 999
 
 <img width="912" height="319" alt="image" src="https://github.com/user-attachments/assets/4b0d65e8-e642-4017-8a0f-42b1fe37b638" />
+
+---
 
 HQ-RTR -> HQ-SRV (vlan 100): 192.168.1.1/27
 
@@ -55,6 +59,8 @@ HQ-RTR -> management vlan 999: 192.168.1.49/28
 Нажимаем "Вычислить". Получили табличку для BR-сети (BR-SRV). Можно посчитать вручную самим.
 
 <img width="905" height="178" alt="image" src="https://github.com/user-attachments/assets/44f81e63-90fa-42c4-be16-c718b0474041" />
+
+---
 
 BR-RTR -> BR-SRV (BR-сеть): 192.168.2.1/28
 

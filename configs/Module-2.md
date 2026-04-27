@@ -597,7 +597,7 @@ ssh sshuser@172.16.5.5 -p 2026
 apt-get update
 apt-get install nginx -y
 systemctl enable --now nginx
-mkdir /etc/nginx
+mkdir /etc/nginx/conf.d
 
 vim /etc/nginx/conf.d/reverse.conf
 # создаём конфиг

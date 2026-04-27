@@ -602,22 +602,22 @@ mkdir /etc/nginx/conf.d
 vim /etc/nginx/conf.d/reverse.conf
 # создаём конфиг
 server {
-    listen 172.16.5.1:80;
+    listen 80;
     server_name web.au-team.irpo;
 
     location / {
-        proxy_pass http://192.168.1.10;
+        proxy_pass http://172.16.4.4:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
 }
 
 server {
-    listen 172.16.4.1:80;
+    listen 80;
     server_name docker.au-team.irpo;
 
     location / {
-        proxy_pass http://192.168.3.10:8080;
+        proxy_pass http://172.16.5.5:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }

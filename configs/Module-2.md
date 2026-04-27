@@ -580,11 +580,70 @@ ssh sshuser@172.16.5.5 -p 2026
 ## 9. Настройка nginx как обратного прокси на ISP
 
 > [!NOTE]
->
+> Как это работает: пользователь открывает нужное доменное имя, а nginx на сервере ISP сам пересылает запрос дальше на внутренний сервер/контейнер.
+
+Поскольку стенд 2025 года перед началом необходимо изменить конфигурацию DNS-сервера dnsmasq на HQ-SRV.
+Открываем /etc/dnsmasq.conf, уюираем cname записи, они нам не нужны и добавлем прямые записи.
+
+![zadanie-9](../pictures-m2/9-hq-srv-change-dnsmasq.png)
+
+Перезагружаем dnsmasq: systemctl restart dnsmasq
+
+Также убеждаемся что на HQ-SRV работает сайт и Docker testapp запущен
 
 ### 🐧 ISP
 
+```
+apt-get update
+apt-get install nginx -y
+systemctl enable --now nginx
 
+vim /etc/nginx/conf.d/reverse.conf
+# создаём конфиг
+server {
+    listen 80;
+    server_name web.au-team.irpo;
+
+    location / {
+        proxy_pass http://192.168.1.10;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+
+server {
+    listen 8080;
+    server_name docker.au-team.irpo;
+
+    location / {
+        proxy_pass http://192.168.3.10:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+
+# проверка конфига
+nginx -t
+
+systemctl restart nginx
+```
+
+![zadanie-9](../pictures-m2/)
+
+![zadanie-9](../pictures-m2/)
+
+![zadanie-9](../pictures-m2/)
+
+### 🐧 HQ-CLI
+
+```
+# в строке браузера вводим:
+http://web.au-team.irpo
+http://docker.au-team.irpo
+
+```
+
+![zadanie-9](../pictures-m2/)
 
 ![zadanie-9](../pictures-m2/)
 

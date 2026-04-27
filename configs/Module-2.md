@@ -676,11 +676,11 @@ nginx -t
 systemctl restart nginx
 ```
 
-![zadanie-10](../pictures-m2/)
+![zadanie-10](../pictures-m2/10-isp-htpasswd-install-create-user.png)
 
-![zadanie-10](../pictures-m2/)
+![zadanie-10](../pictures-m2/10-isp-change-nginx-config.png)
 
-![zadanie-10](../pictures-m2/)
+![zadanie-10](../pictures-m2/10-isp-test-restart-nginx.png)
 
 ### 🐧 HQ-CLI
 
@@ -688,11 +688,17 @@ systemctl restart nginx
 http://web.au-team.irpo
 
 # теперь получаем окно с авторизацией
-# введём неправильные данные - доступа не будет
+# введём неправильные данные - окно с авторизацией перезагрузиться
 # введём правильные данные - откроется сайт
 ```
 
-![zadanie-10](../pictures-m2/)
+![zadanie-10](../pictures-m2/10-hq-cli-web-auth.png)
+
+![zadanie-10](../pictures-m2/10-hq-cli-web-auth-login.png)
+
+![zadanie-10](../pictures-m2/10-hq-cli-web-auth-login-success.png)
+
+![zadanie-10](../pictures-m2/10-hq-cli-web-auth-login-in-terminal.png)
 
 ## 11. Настройка Samba DC на BR-SRV
 

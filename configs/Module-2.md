@@ -579,6 +579,11 @@ ssh sshuser@172.16.5.5 -p 2026
 
 ## 9. Настройка nginx как обратного прокси на ISP
 
+> [!NOTE]
+>
+
+### 🐧 ISP
+
 
 
 ![zadanie-9](../pictures-m2/)

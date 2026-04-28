@@ -723,6 +723,14 @@ http://web.au-team.irpo
 
 В /etc/resolv.conf на HQ-CLI у нас "nameserver 192.168.1.10". Укажем 2 DNS, первым будет именно Samba DC (BR-SRV)
 
+```
+vim /etc/resolv.conf
+# приводим к такому ввиду:
+search au-team.irpo
+nameserver 192.168.3.10
+nameserver 192.168.1.10
+```
+
 ![zadanie-11](../pictures-m2/11-hq-cli-change-resolv-conf.png)
 
 На HQ-SRV добавим forwarding запросов к BR-SRV для домена в /etc/dnamasq.conf:
@@ -732,6 +740,10 @@ server=/au-team.irpo/192.168.3.10
 
 systemctl restart dnsmasq
 ```
+
+![zadanie-11](../pictures-m2/11-hq-srv-add-forwarding-dnsmasq.png)
+
+![zadanie-11](../pictures-m2/11-hq-srv-dnsmasq-restart.png)
 
 ### 🐧 BR-SRV
 

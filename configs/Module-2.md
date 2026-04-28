@@ -828,6 +828,12 @@ klist
 
 ![zadanie-11](../pictures-m2/11-br-srv-create-domain-result.png)
 
+![zadanie-11](../pictures-m2/11-br-srv-kerberos-enable-samba.png)
+
+![zadanie-11](../pictures-m2/11-br-srv-samba-check.png)
+
+![zadanie-11](../pictures-m2/)
+
 ![zadanie-11](../pictures-m2/)
 
 ![zadanie-11](../pictures-m2/)

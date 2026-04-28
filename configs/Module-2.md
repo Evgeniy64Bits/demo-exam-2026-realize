@@ -833,11 +833,12 @@ host br-srv.au-team.irpo
 
 ![zadanie-11](../pictures-m2/11-br-srv-samba-check.png)
 
-host br-srv.au-team.irpo выдаёт 172.17.0.1, это ip интерфейса docker0
-
-При создании домена Samba автоматически выбрала один из интерфейсов и внесла его в DNS как A-запись хоста.
-
-Произошёл выбор не того интерфейса, исправляем
+> [!WARNING]
+> host br-srv.au-team.irpo выдаёт 172.17.0.1, это ip интерфейса docker0
+>
+> При создании домена Samba автоматически выбрала один из интерфейсов и внесла его в DNS как A-запись хоста
+>
+> Произошёл выбор не того интерфейса, исправляем
 
 ```
 samba-tool dns delete 127.0.0.1 au-team.irpo br-srv A 172.17.0.1 -U administrator
@@ -849,7 +850,8 @@ host br-srv.au-team.irpo
 
 ![zadanie-11](../pictures-m2/11-br-srv-solve-problem-wrong-ip-record-samba.png)
 
-На будущее - остановить Docker перед тем как создавать домен
+> [!TIP]
+> На будущее - остановить Docker перед тем как создавать домен
 
 ```
 systemctl stop docker

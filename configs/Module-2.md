@@ -716,9 +716,22 @@ http://web.au-team.irpo
 > - LDAP каталогом пользователей
 >
 > Сначала выполняем создание и настройку домена на BR-SRV, затем на HQ-CLI - все проверки.
+>
+> У нас уже есть HQ-SRV как основной DNS (dnsmasq). Мы поступим так - Samba DC на BR-SRV будет DNS-сервером для домена au-team.irpo, а HQ-SRV оставим как внешний резолвер. Так правильнее и домен будет работать стабильнее. Поскольку Active Directory использует специальные SRV-записи.
 
+Начнём с подготовки
 
+В /etc/resolv.conf на HQ-CLI у нас "nameserver 192.168.1.10". Укажем 2 DNS, первым будет именно Samba DC (BR-SRV)
 
+![zadanie-11](../pictures-m2/11-hq-cli-change-resolv-conf.png)
+
+На HQ-SRV добавим forwarding запросов к BR-SRV для домена в /etc/dnamasq.conf:
+
+```
+server=/au-team.irpo/192.168.3.10
+
+systemctl restart dnsmasq
+```
 
 ### 🐧 BR-SRV
 

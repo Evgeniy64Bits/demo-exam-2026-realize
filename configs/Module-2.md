@@ -796,7 +796,23 @@ domain - AU-TEAM
 server-role - dc
 dns-backend - SAMBA_INTERNAL
 dns-forwarder - 192.168.1.10
-adminpass - 'P@ssw0rd!'
+adminpass - P@ssw0rd!
+
+# 6. Kerberos
+
+cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
+
+# 7. Запуск
+
+systemctl enable --now samba
+
+# 8. Проверка
+
+samba-tool domain level show
+host -t SRV _ldap._tcp.au-team.irpo
+kinit administrator
+klist
+
 
 ```
 
@@ -808,9 +824,9 @@ adminpass - 'P@ssw0rd!'
 
 ![zadanie-11](../pictures-m2/11-br-srv-clear-samba.png)
 
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-br-srv-create-domain.png)
 
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-br-srv-create-domain-result.png)
 
 ![zadanie-11](../pictures-m2/)
 

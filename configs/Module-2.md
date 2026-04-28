@@ -759,6 +759,35 @@ systemctl restart dnsmasq
 ### 🐧 BR-SRV
 
 ```
+# 1. Правка hosts
+
+vim /etc/hosts
+# добавим:
+127.0.0.1 localhost
+192.168.3.10 BR-SRV.au-team.irpo BR-SRV
+
+# 2. DNS на самом BR-SRV
+
+vim /etc/resolv.conf
+search au-team.irpo
+nameserver 192.168.3.10
+nameserver 192.168.1.10
+
+# 3. Установка пакетов
+
+apt-get update
+apt-get install task-samba-dc task-auth-ad-client -y
+
+# 4. Очистка старой Samba
+
+systemctl stop samba
+rm -f /etc/samba/smb.conf
+rm -rf /var/lib/samba
+mkdir -p /var/lib/samba/sysvol
+
+# 5. Создание домена
+
+samba-tool domain provision
 
 ```
 

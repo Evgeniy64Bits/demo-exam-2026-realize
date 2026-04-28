@@ -769,6 +769,7 @@ vim /etc/hosts
 # 2. DNS на самом BR-SRV
 
 vim /etc/resolv.conf
+# приводим к этому ввиду:
 search au-team.irpo
 nameserver 192.168.3.10
 nameserver 192.168.1.10
@@ -790,5 +791,19 @@ mkdir -p /var/lib/samba/sysvol
 samba-tool domain provision
 
 ```
+
+![zadanie-11](../pictures-m2/11-br-srv-change-hosts.png)
+
+![zadanie-11](../pictures-m2/11-br-srv-change-resolv.png)
+
+![zadanie-11](../pictures-m2/)
+
+![zadanie-11](../pictures-m2/)
+
+![zadanie-11](../pictures-m2/)
+
+![zadanie-11](../pictures-m2/)
+
+![zadanie-11](../pictures-m2/)
 
 ![zadanie-11](../pictures-m2/)

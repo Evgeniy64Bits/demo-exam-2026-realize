@@ -789,6 +789,12 @@ mkdir -p /var/lib/samba/sysvol
 # 5. Создание домена
 
 samba-tool domain provision
+# в интерактивном режиме вводим/задаём параметры:
+realm - AU-TEAM.IRPO
+domain - AU-TEAM
+server-role - dc
+dns-backend - SAMBA_INTERNAL
+adminpass - 'P@ssw0rd!'
 
 ```
 
@@ -796,9 +802,9 @@ samba-tool domain provision
 
 ![zadanie-11](../pictures-m2/11-br-srv-change-resolv.png)
 
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-br-srv-packages-install.png)
 
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-br-srv-clear-samba.png)
 
 ![zadanie-11](../pictures-m2/)
 

@@ -790,6 +790,7 @@ mkdir -p /var/lib/samba/sysvol
 
 samba-tool domain provision
 # в интерактивном режиме вводим/задаём параметры:
+# (в первых 4-ёх можно просто нажимать Enter)
 realm - AU-TEAM.IRPO
 domain - AU-TEAM
 server-role - dc

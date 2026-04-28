@@ -777,7 +777,7 @@ nameserver 192.168.1.10
 # 3. Установка пакетов
 
 apt-get update
-apt-get install task-samba-dc task-auth-ad-client -y
+apt-get install task-samba-dc task-auth-ad-sssd -y
 
 # 4. Очистка старой Samba
 

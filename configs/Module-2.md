@@ -794,6 +794,7 @@ realm - AU-TEAM.IRPO
 domain - AU-TEAM
 server-role - dc
 dns-backend - SAMBA_INTERNAL
+dns-forwarder - 192.168.1.10
 adminpass - 'P@ssw0rd!'
 
 ```

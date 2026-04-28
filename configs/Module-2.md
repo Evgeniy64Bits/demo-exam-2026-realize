@@ -758,6 +758,8 @@ systemctl restart dnsmasq
 
 ### 🐧 BR-SRV
 
+Часть 1
+
 ```
 # 1. Правка hosts
 
@@ -812,7 +814,32 @@ samba-tool domain level show
 host -t SRV _ldap._tcp.au-team.irpo
 kinit administrator
 klist
+host br-srv.au-team.irpo
+```
 
+host br-srv.au-team.irpo выдаёт 172.17.0.1, это ip интерфейса docker0
+
+При создании домена Samba автоматически выбрала один из интерфейсов и внесла его в DNS как A-запись хоста.
+
+Произошёл выбор не того интерфейса, исправляем
+
+```
+samba-tool dns delete 127.0.0.1 au-team.irpo br-srv A 172.17.0.1 -U administrator
+samba-tool dns add 127.0.0.1 au-team.irpo br-srv A 192.168.3.10 -U administrator
+
+# проверка, должно быть 192.168.3.10
+host br-srv.au-team.irpo
+```
+
+На будущее - остановить Docker перед тем как создавать домен
+
+```
+systemctl stop docker
+```
+
+Часть 2
+
+```
 
 ```
 

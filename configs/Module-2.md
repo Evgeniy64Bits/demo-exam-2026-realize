@@ -1,4 +1,4 @@
-# 📘 Модуль 2 — Пояснения к сетевому администрированию
+<img width="449" height="145" alt="image" src="https://github.com/user-attachments/assets/c183c9c6-e8f5-4454-a998-606b78eb4f29" /># 📘 Модуль 2 — Пояснения к сетевому администрированию
 
 Покажу этот модуль на Proxmox, отличия с VMware Workstation будут только в интерфейсах (ens18/19, te0/1, ...)
 
@@ -903,26 +903,35 @@ id hquser1
 Часть 4
 
 ```
+# перед изменением access.conf выходим из доменной учётки
+# "Menu" -> "Logout" -> "Switch User"
+# заходим под user - локальной учёткой
+
 vim /etc/security/access.conf
 # добавим:
 +:@hq:ALL
 -:ALL:ALL
-
-# убеждаемся в PAM:
-account required pam_access.so
 ```
 
-![zadanie-11](../pictures-m2/)
-
-![zadanie-11](../pictures-m2/)
-
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-hq-cli-join-only-hq-access.png)
 
 Часть 5
 
 ```
+visudo
+# добавим:
+%hq ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
 
+# после обратно заходим под доменным пользователем
+# проверяем sudo команды:
+su - hquser1
+sudo id
+sudo cat /etc/passwd
+sudo bash
 ```
+![zadanie-11](../pictures-m2/)
+
+![zadanie-11](../pictures-m2/)
 
 ![zadanie-11](../pictures-m2/)
 

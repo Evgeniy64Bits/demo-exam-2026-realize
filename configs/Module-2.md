@@ -896,12 +896,20 @@ id hquser1
 
 ![zadanie-11](../pictures-m2/11-hq-cli-join-domain.png)
 
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-hq-cli-login-in-domain.png)
+
+![zadanie-11](../pictures-m2/11-hq-cli-check-success-join.png)
 
 Часть 4
 
 ```
+vim /etc/security/access.conf
+# добавим:
++:@hq:ALL
+-:ALL:ALL
 
+# убеждаемся в PAM:
+account required pam_access.so
 ```
 
 ![zadanie-11](../pictures-m2/)

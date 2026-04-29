@@ -918,7 +918,7 @@ vim /etc/security/access.conf
 Часть 5
 
 ```
-visudo
+EDITOR=nano visudo
 # добавим:
 %hq ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
 

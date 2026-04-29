@@ -928,6 +928,10 @@ hquser3 ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
 hquser4 ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
 hquser5 ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
 
+# либо вариант в одну строку с указанием группы:
+
+%hq ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
+
 # поправляем права sudo после доменного ввода
 ls -l /usr/bin/sudo
 chown root:root /usr/bin/sudo

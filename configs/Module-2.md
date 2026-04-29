@@ -894,7 +894,30 @@ getent passwd hquser1
 id hquser1
 ```
 
+![zadanie-11](../pictures-m2/11-hq-cli-join-domain.png)
+
+![zadanie-11](../pictures-m2/)
+
+Часть 4
+
+```
+
+```
+
+![zadanie-11](../pictures-m2/)
+
 ![zadanie-11](../pictures-m2/)
 
 ![zadanie-11](../pictures-m2/)
 
+Часть 5
+
+```
+
+```
+
+![zadanie-11](../pictures-m2/)
+
+![zadanie-11](../pictures-m2/)
+
+![zadanie-11](../pictures-m2/)

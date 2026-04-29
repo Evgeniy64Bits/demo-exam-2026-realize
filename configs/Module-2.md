@@ -879,14 +879,13 @@ done
 samba-tool group listmembers hq
 ```
 
-![zadanie-11](../pictures-m2/)
-
-![zadanie-11](../pictures-m2/)
-
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-br-srv-group-hq-and-add-users.png)
 
 Часть 3
 
 ### 🐧 HQ-CLI
 
+![zadanie-11](../pictures-m2/)
+
+![zadanie-11](../pictures-m2/)
 

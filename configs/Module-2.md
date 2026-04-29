@@ -1,4 +1,4 @@
-# 📘 Модуль 2 — Пояснения к сетевому администрированию
+<img width="588" height="385" alt="image" src="https://github.com/user-attachments/assets/8f452651-c5f0-4bff-908a-eadafbecbd6e" /># 📘 Модуль 2 — Пояснения к сетевому администрированию
 
 Покажу этот модуль на Proxmox, отличия с VMware Workstation будут только в интерфейсах (ens18/19, te0/1, ...)
 
@@ -904,7 +904,7 @@ id hquser1
 
 ```
 # перед изменением access.conf выходим из доменной учётки
-# "Menu" -> "Logout" -> "Switch User"
+# "Menu" -> "Logout" -> "Switch User" / "Log Out"
 # заходим под user - локальной учёткой
 
 vim /etc/security/access.conf
@@ -920,7 +920,19 @@ vim /etc/security/access.conf
 ```
 EDITOR=nano visudo
 # добавим:
-%hq ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
+# для копирования можем по простому выделить строку мышкой
+# скопировать Ctrl+Shif+C и вставить Ctrl+Shif+V
+hquser1 ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
+hquser2 ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
+hquser3 ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
+hquser4 ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
+hquser5 ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
+
+# поправляем права sudo после доменного ввода
+ls -l /usr/bin/sudo
+chown root:root /usr/bin/sudo
+chmod 4755 /usr/bin/sudo
+ls -l /usr/bin/sudo
 
 # после обратно заходим под доменным пользователем
 # проверяем sudo команды:
@@ -929,12 +941,17 @@ sudo id
 sudo cat /etc/passwd
 sudo bash
 ```
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-hq-cli-change-visudo.png)
 
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-hq-cli-fix-sudo-after-domain-login.png)
 
-![zadanie-11](../pictures-m2/)
+![zadanie-11](../pictures-m2/11-hq-cli-sudo-check-test.png)
 
-![zadanie-11](../pictures-m2/)
+> [!TIP]
+> На будущее - после присоединения к домену не заходить под доменным пользователем, а сразу сделать Часть 4 и Часть 5
+>
+> После этого заходить под hquser1 и выполнять проверки
+>
+> Скорее всего, не пришлось бы исправлять проблему с правами sudo
 
-![zadanie-11](../pictures-m2/)
+

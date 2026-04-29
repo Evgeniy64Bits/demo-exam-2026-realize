@@ -885,6 +885,15 @@ samba-tool group listmembers hq
 
 ### 🐧 HQ-CLI
 
+```
+system-auth write ad au-team.irpo hq-cli AU-TEAM administrator 'P@ssw0rd!'
+reboot
+
+# проверка:
+getent passwd hquser1
+id hquser1
+```
+
 ![zadanie-11](../pictures-m2/)
 
 ![zadanie-11](../pictures-m2/)

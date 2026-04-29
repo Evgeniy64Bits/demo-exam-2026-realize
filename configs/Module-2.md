@@ -859,12 +859,34 @@ systemctl stop docker
 
 Часть 2
 
-```
+### 🐧 BR-SRV
 
 ```
+# 1. Группа
+samba-tool group add hq
+
+# 2. Пользователи
+for i in 1 2 3 4 5; do
+samba-tool user create hquser$i P@ssw0rd$i
+done
+
+# 3. Добавить в группу
+for i in 1 2 3 4 5; do
+samba-tool group addmembers hq hquser$i
+done
+
+# проверка
+samba-tool group listmembers hq
+```
 
 ![zadanie-11](../pictures-m2/)
 
 ![zadanie-11](../pictures-m2/)
 
 ![zadanie-11](../pictures-m2/)
+
+Часть 3
+
+### 🐧 HQ-CLI
+
+

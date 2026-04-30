@@ -124,6 +124,18 @@ echo "sshuser:P@ssw0rd" | chpasswd
 gpasswd -a sshuser wheel
 echo 'sshuser ALL = (root) NOPASSWD: ALL' >> /etc/sudoers
 
+vim /etc/openssh/sshd_config
+Port 2026
+MaxAuthTries 2
+Banner /etc/openssh/banner
+AllowUsers sshuser
+echo Authorized access only > /etc/openssh/banner
+systemctl restart sshd
+```
+
+### 🐧 HQ-CLI
+
+```
 
 ```
 

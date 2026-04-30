@@ -8,6 +8,7 @@
 hostnamectl set-hostname ISP;exec bash
 
 echo HTTP_PROXY=http://10.0.21.52:3128 >> /etc/sysconfig/network
+reboot
 mkdir /etc/net/ifaces/ens19
 mkdir /etc/net/ifaces/ens20
 printf "BOOTPROTO=static\nTYPE=eth\n" > /etc/net/ifaces/ens19/options
@@ -150,6 +151,37 @@ Banner /etc/openssh/banner
 AllowUsers sshuser
 echo Authorized access only > /etc/openssh/banner
 systemctl restart sshd
+
+echo HTTP_PROXY=http://10.0.21.52:3128 >> /etc/sysconfig/network
+reboot
+apt-get update
+apt-get install dnsmasq -y
+echo 'OPTIONS=""' > /etc/sysconfig/dnsmasq
+service network restart
+cat <<'EOT' > /etc/dnsmasq.conf
+no-resolv
+no-poll
+no-hosts
+
+server=77.88.8.7
+server=195.208.4.1
+server=8.8.8.8
+
+cache-size=1000
+all-servers
+no-negcache
+
+host-record=hq-rtr.au-team.irpo,192.168.1.1
+host-record=hq-srv.au-team.irpo,192.168.1.2
+host-record=hq-cli.au-team.irpo,192.168.1.34
+
+address=/br-rtr.au-team.irpo/192.168.2.1
+address=/br-srv.au-team.irpo/192.168.2.2
+
+address=/docker.au-team.irpo/172.16.1.1
+address=/web.au-team.irpo/172.16.2.1
+EOT
+systemctl enable --now dnsmasq
 ```
 
 ### 🐧 HQ-CLI
@@ -223,7 +255,25 @@ show ip route ospf
 ### 🐧 BR-SRV
 
 ```
+hostnamectl set-hostname br-srv.au-team.irpo;exec bash
 
+echo 192.168.2.2/28 > /etc/net/ifaces/ens18/ipv4address
+echo default via 192.168.2.1 > /etc/net/ifaces/ens18/ipv4route
+systemctl restart network
+
+timedatectl set-timezone Europe/Moscow
+
+useradd -s /bin/bash -u 2026 sshuser
+echo "sshuser:P@ssw0rd" | chpasswd
+gpasswd -a sshuser wheel
+echo 'sshuser ALL = (root) NOPASSWD: ALL' >> /etc/sudoers
+
+vim /etc/openssh/sshd_config
+Port 2026
+MaxAuthTries 2
+Banner /etc/openssh/banner
+AllowUsers sshuser
+echo Authorized access only > /etc/openssh/banner
+systemctl restart sshd
 ```
-
 

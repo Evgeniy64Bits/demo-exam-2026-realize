@@ -68,24 +68,24 @@ interface eth1
 ip address 172.16.4.2/28
 connect port te0 service-instance te0/isp-hq
 ip nat outside
-exit
+
 
 interface eth2
 ip address 192.168.100.1/26
 connect port te1 service-instance te1/srv-net
 ip nat inside
-exit
 
 interface eth3
 ip address 192.168.100.65/28
 connect port te1 service-instance te1/cli-net
 ip nat inside
-exit
 
 interface eth4
 ip address 192.168.100.81/29
 connect port te1 service-instance te1/management
 ip nat inside
+
+write memory
 ```
 
 

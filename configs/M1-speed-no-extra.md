@@ -2,4 +2,9 @@
 
 ## Заточен под реальный стенд на Proxmox у меня в колледже
 
-В разработке
+### 🐧 ISP
+
+```
+hostnamectl set-hostname ISP;exec bash
+
+```

@@ -136,7 +136,15 @@ systemctl restart sshd
 ### 🐧 HQ-CLI
 
 ```
+hostnamectl set-hostname hq-cli.au-team.irpo;exec bash
 
+nano /etc/net/ifaces/ens18/options
+NM_CONTROLLED=no
+DISABLED=no
+BOOTPROTO=dhcp
+systemctl restart network
+
+timedatectl set-timezone Europe/Moscow
 ```
 
 

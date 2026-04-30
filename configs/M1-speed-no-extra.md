@@ -69,7 +69,6 @@ ip address 172.16.4.2/28
 connect port te0 service-instance te0/isp-hq
 ip nat outside
 
-
 interface eth2
 ip address 192.168.100.1/26
 connect port te1 service-instance te1/srv-net

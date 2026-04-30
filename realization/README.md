@@ -685,9 +685,9 @@ Systemd — это подсистема инициализации и управ
 
 Особенность их создания в том, что мы используем готовый файл конфигурации формата .ovf (Open Virtualization Format). В нём лежат корректные настройки для создания EcoRouter, чтобы он смог завестись.
 
-Данный файл лежит в [mydocs](https://github.com/Evgeniy64Bits/demo-exam-2026-realize/blob/main/mydocs/EcoRouter%202.ovf) репозитория
-
 Иначе, если пробовать создавать ВМ вручную, она будет в бесконечном зависании на экране "Welcome to GRUB", я пробовал.
+
+Данный файл лежит в [mydocs](https://github.com/Evgeniy64Bits/demo-exam-2026-realize/blob/main/mydocs/EcoRouter%202.ovf) репозитория
 
 Создайте отдельные каталоги для роутеров HQ-RTR-m1 м BR-RTR-m1 и скопируйте в них EcoRouter-0.vmdk
 

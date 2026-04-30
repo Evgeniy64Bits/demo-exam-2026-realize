@@ -64,22 +64,22 @@ service-instance te1/management
 encapsulation dot1q 999
 rewrite pop 1
 
-interface eth1
+interface e1
 ip address 172.16.1.2/28
 connect port te0 service-instance te0/isp-hq
 ip nat outside
 
-interface eth2
+interface e2
 ip address 192.168.1.1/27
 connect port te1 service-instance te1/srv-net
 ip nat inside
 
-interface eth3
+interface e3
 ip address 192.168.1.33/28
 connect port te1 service-instance te1/cli-net
 ip nat inside
 
-interface eth4
+interface e4
 ip address 192.168.1.49/29
 connect port te1 service-instance te1/management
 ip nat inside
@@ -102,8 +102,27 @@ gateway 192.168.1.33
 dns 192.168.1.2
 domain-name au-team.irpo
 
-interface eth3
+interface e3
 dhcp-server 1
+
+ip nat pool nat 192.168.1.1-192.168.1.30, 192.168.1.33-192.168.1.46, 192.168.1.49-192.168.1.54
+ip nat source dynamic inside-to-outside pool nat overload interface e1
+
+ip route 0.0.0.0/0 172.16.4.1 description default
+
+interface tunnel.1
+ip add 192.168.10.1/30
+ip tunnel 172.16.1.2 172.16.2.2 mode gre
+ip ospf authentication
+ip ospf authentication-key P@$$word
+
+(config)#router ospf 1
+network 192.168.10.0/30 area 0.0.0.0
+network 192.168.1.0/27 area 0.0.0.0
+network 192.168.1.32/28 area 0.0.0.0
+network 192.168.100.48/29 area 0.0.0.0
+passive-interface default
+no passive-interface tunnel.1
 
 write memory
 ```
@@ -146,6 +165,45 @@ systemctl restart network
 
 timedatectl set-timezone Europe/Moscow
 ```
+
+### 🍃 BR-RTR
+
+```
+hostname br-rtr.au-team.irpo
+ip domain-name au-team.irpo
+
+port te0
+service-instance te0/isp-br
+encapsulation untagged
+
+port te1
+service-instance te1/br-net
+encapsulation-untagged
+
+interface e1
+ip address 172.16.2.2/28
+connect port te0 service-instance te0/isp-br
+ip nat outside
+
+interface e2
+ip address 192.168.2.1/28
+connect port te1 service-instance te1/br-net
+ip nat inside
+
+ntp timezone utc+3
+
+username net_admin
+password P@ssw0rd
+role admin
+
+write memory
+
+ip nat pool nat 192.168.2.1-192.168.50.14
+ip nat source dynamic inside-to-outside pool nat overload interface e1
+
+
+```
+
 
 
 

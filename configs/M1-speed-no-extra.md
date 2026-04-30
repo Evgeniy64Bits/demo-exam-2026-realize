@@ -105,10 +105,10 @@ domain-name au-team.irpo
 interface e3
 dhcp-server 1
 
-ip nat pool nat 192.168.1.1-192.168.1.30, 192.168.1.33-192.168.1.46, 192.168.1.49-192.168.1.54
+ip nat pool nat 192.168.1.1-192.168.1.30,192.168.1.33-192.168.1.46,192.168.1.49-192.168.1.54
 ip nat source dynamic inside-to-outside pool nat overload interface e1
 
-ip route 0.0.0.0/0 172.16.4.1 description default
+ip route 0.0.0.0/0 172.16.1.1 description default
 
 interface tunnel.1
 ip add 192.168.10.1/30
@@ -201,10 +201,29 @@ write memory
 ip nat pool nat 192.168.2.1-192.168.50.14
 ip nat source dynamic inside-to-outside pool nat overload interface e1
 
+ip route 0.0.0.0/0 172.16.2.1 description default
+
+interface tunnel.1
+ip add 192.168.10.2/30
+ip tunnel 172.16.2.2 172.16.1.2 mode gre
+ip ospf authentication
+ip ospf authentication-key P@$$word
+
+router ospf 1
+network 192.168.10.0/30 area 0.0.0.0
+network 192.168.2.0/28 area 0.0.0.0
+passive-interface default
+no passive-interface tunnel.1
+
+write memory
+show ip ospf neighbor
+show ip route ospf
+```
+
+### 🐧 BR-SRV
 
 ```
 
-
-
+```
 
 

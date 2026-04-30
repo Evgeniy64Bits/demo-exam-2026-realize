@@ -52,7 +52,7 @@ HQ-RTR -> HQ-SRV (vlan 100): 192.168.1.1/27
 
 HQ-RTR -> HQ-CLI (vlan 200): 192.168.1.33/28
 
-HQ-RTR -> management vlan 999: 192.168.1.49/28
+HQ-RTR -> management vlan 999: 192.168.1.49/29
 
 ### BR-RTR
 

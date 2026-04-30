@@ -12,8 +12,8 @@ mkdir /etc/net/ifaces/ens19
 mkdir /etc/net/ifaces/ens20
 printf "BOOTPROTO=static\nTYPE=eth\n" > /etc/net/ifaces/ens19/options
 printf "BOOTPROTO=static\nTYPE=eth\n" > /etc/net/ifaces/ens20/options
-echo 172.16.4.1/28 > /etc/net/ifaces/ens19/ipv4address 
-echo 172.16.5.1/28 > /etc/net/ifaces/ens20/ipv4address
+echo 172.16.1.1/28 > /etc/net/ifaces/ens19/ipv4address 
+echo 172.16.2.1/28 > /etc/net/ifaces/ens20/ipv4address
 systemctl restart network
 
 apt-get update
@@ -65,22 +65,22 @@ encapsulation dot1q 999
 rewrite pop 1
 
 interface eth1
-ip address 172.16.4.2/28
+ip address 172.16.1.2/28
 connect port te0 service-instance te0/isp-hq
 ip nat outside
 
 interface eth2
-ip address 192.168.100.1/26
+ip address 192.168.1.1/27
 connect port te1 service-instance te1/srv-net
 ip nat inside
 
 interface eth3
-ip address 192.168.100.65/28
+ip address 192.168.1.33/28
 connect port te1 service-instance te1/cli-net
 ip nat inside
 
 interface eth4
-ip address 192.168.100.81/29
+ip address 192.168.1.49/29
 connect port te1 service-instance te1/management
 ip nat inside
 

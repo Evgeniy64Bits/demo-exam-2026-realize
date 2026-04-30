@@ -84,9 +84,48 @@ ip address 192.168.1.49/29
 connect port te1 service-instance te1/management
 ip nat inside
 
+ntp timezone utc+3
+
+username net_admin
+password P@ssw0rd
+role admin
+
+write memory
+
+ip pool dhcp 1
+range 192.168.1.34-192.168.1.46
+
+dhcp-server 1
+pool dhcp 64
+mask 255.255.255.240
+gateway 192.168.1.33
+dns 192.168.1.2
+domain-name au-team.irpo
+
+interface eth3
+dhcp-server 1
+
 write memory
 ```
 
+### 🐧 HQ-SRV
+
+```
+hostnamectl set-hostname hq-srv.au-team.irpo;exec bash
+
+echo 192.168.1.2/27 > /etc/net/ifaces/ens18/ipv4address
+echo default via 192.168.1.1 > /etc/net/ifaces/ens18/ipv4route
+systemctl restart network
+
+timedatectl set-timezone Europe/Moscow
+
+useradd -s /bin/bash -u 2026 sshuser
+echo "sshuser:P@ssw0rd" | chpasswd
+gpasswd -a sshuser wheel
+echo 'sshuser ALL = (root) NOPASSWD: ALL' >> /etc/sudoers
+
+
+```
 
 
 

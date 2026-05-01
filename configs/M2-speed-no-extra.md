@@ -157,6 +157,32 @@ docker ps -a
 ```
 apt-get install httpd2 apache2-mod_php8.1 php8.1 php8.1-mysqlnd php8.1-mysqli -y
 systemctl enable --now httpd2
+apt-get install mariadb-server -y
+systemctl enable --now mariadb
+mysql -u root
+CREATE DATABASE webdb;
+CREATE USER 'web'@'localhost' IDENTIFIED BY 'P@ssw0rd';
+GRANT ALL PRIVILEGES ON webdb.* TO 'web'@'localhost';
+FLUSH PRIVILEGES;
+mkdir /mnt/cdrom
+mount /dev/sr0 /mnt/cdrom
+ls /mnt/cdrom/web
+mysql -u root webdb < /mnt/cdrom/web/dump.sql
+cp /mnt/cdrom/web/index.php /var/www/html/
+cp /mnt/cdrom/web/logo.png /var/www/html/
+chown -R apache2:apache2 /var/www/html
+chmod -R 777 /var/www/html
+vim /var/www/html/index.php
+$servername = "localhost";
+$username = "web";
+$password = "P@ssw0rd";
+$dbname = "webdb";
+systemctl restart httpd2
+```
+
+### 🐧 HQ-CLI
+
+```
 
 ```
 

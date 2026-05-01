@@ -155,7 +155,7 @@ reboot
 apt-get update
 apt-get install dnsmasq -y
 echo 'OPTIONS=""' > /etc/sysconfig/dnsmasq
-service network restart
+systemctl restart network
 cat <<'EOT' > /etc/dnsmasq.conf
 no-resolv
 no-poll

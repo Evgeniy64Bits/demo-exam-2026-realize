@@ -214,9 +214,40 @@ DNAT здесь исходя из смысла
 ### 🐧 ISP
 
 ```
+apt-get update
+apt-get install nginx -y
+systemctl enable --now nginx
+vim /etc/nginx/sites-enabled.d/reverse.conf
+server {
+    listen 80;
+    server_name web.au-team.irpo;
 
+    location / {
+        proxy_pass http://172.16.4.4:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+
+server {
+    listen 80;
+    server_name docker.au-team.irpo;
+
+    location / {
+        proxy_pass http://172.16.5.5:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+nginx -t
+systemctl restart nginx
 ```
 
+### 🐧 HQ-CLI
 
+```
+http://web.au-team.irpo
+http://docker.au-team.irpo
+```
 
 

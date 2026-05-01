@@ -332,7 +332,6 @@ system-auth write ad au-team.irpo hq-cli AU-TEAM administrator 'P@ssw0rd!'
 
 # Part 4
 vim /etc/security/access.conf
-# добавим:
 +:@hq:ALL
 -:ALL:ALL
 

@@ -124,7 +124,7 @@ vim /usr/docker/docker-compose.yml
 services:
   testapp:
     image: site:latest
-    container_name: testapp
+    container_name: tespapp
     restart: always
     ports:
       - "8080:8000"
@@ -171,7 +171,7 @@ mysql -u root webdb < /mnt/cdrom/web/dump.sql
 cp /mnt/cdrom/web/index.php /var/www/html/
 cp /mnt/cdrom/web/logo.png /var/www/html/
 chown -R apache2:apache2 /var/www/html
-chmod -R 777 /var/www/html
+chmod -R 755 /var/www/html
 vim /var/www/html/index.php
 $servername = "localhost";
 $username = "web";

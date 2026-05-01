@@ -215,12 +215,16 @@ DNAT здесь исходя из смысла
 
 ```
 apt-get update
-apt-get install nginx -y
+apt-get install nginx apache2-htpasswd -y
 systemctl enable --now nginx
+htpasswd -c /etc/nginx/.htpasswd WEB
+P@ssw0rd
 vim /etc/nginx/sites-enabled.d/reverse.conf
 server {
     listen 80;
     server_name web.au-team.irpo;
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/.htpasswd;
 
     location / {
         proxy_pass http://172.16.4.4:8080;
@@ -241,6 +245,8 @@ server {
 }
 nginx -t
 systemctl restart nginx
+
+
 ```
 
 ### 🐧 HQ-CLI
@@ -249,5 +255,91 @@ systemctl restart nginx
 http://web.au-team.irpo
 http://docker.au-team.irpo
 ```
+10 tasks done - hard
 
+### 🐧 HQ-CLI
+
+```
+vim /etc/resolv.conf
+search au-team.irpo
+nameserver 192.168.3.10
+nameserver 192.168.1.10
+```
+
+### 🐧 HQ-SRV - not important i think but perfectly
+
+```
+vim /etc/dnsmasq.conf
+server=/au-team.irpo/192.168.3.10
+systemctl restart dnsmasq
+```
+
+### 🐧 BR-SRV
+
+```
+# Part 1
+vim /etc/hosts
+127.0.0.1 localhost
+192.168.3.10 BR-SRV.au-team.irpo BR-SRV
+
+vim /etc/resolv.conf
+search au-team.irpo
+nameserver 192.168.3.10
+nameserver 192.168.1.10
+
+apt-get update
+apt-get install task-samba-dc task-auth-ad-sssd -y
+
+systemctl stop samba
+rm -f /etc/samba/smb.conf
+rm -rf /var/lib/samba
+mkdir -p /var/lib/samba/sysvol
+
+systemctl stop docker
+realm - AU-TEAM.IRPO
+domain - AU-TEAM
+server-role - dc
+dns-backend - SAMBA_INTERNAL
+dns-forwarder - 192.168.1.10
+adminpass - P@ssw0rd!
+
+cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
+
+systemctl enable --now samba
+
+host -t SRV _ldap._tcp.au-team.irpo
+kinit administrator
+
+#Part 2
+samba-tool group add hq
+
+for i in 1 2 3 4 5; do
+samba-tool user create hquser$i P@ssw0rd$i
+done
+
+for i in 1 2 3 4 5; do
+samba-tool group addmembers hq hquser$i
+done
+
+samba-tool group listmembers hq
+```
+
+### 🐧 HQ-CLI
+
+```
+# Part 3
+system-auth write ad au-team.irpo hq-cli AU-TEAM administrator 'P@ssw0rd!'
+reboot
+
+# Part 4
+vim /etc/security/access.conf
+# добавим:
++:@hq:ALL
+-:ALL:ALL
+
+# Part 5
+EDITOR=nano visudo
+%hq ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
+
+```
 

@@ -53,7 +53,6 @@ vim /etc/chrony.conf
 server 172.16.4.1 iburst
 systemctl enable --now chronyd
 
-apt-get install nfs-server -y
 systemctl enable --now nfs-server
 mkdir -p /raid/nfs
 chmod 777 /raid/nfs

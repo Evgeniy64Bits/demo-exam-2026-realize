@@ -186,11 +186,26 @@ systemctl restart httpd2
 http://192.168.1.10
 http://192.168.3.10:8080
 ```
-7 tasks done - normal
+
+### 🍃 HQ-RTR
+
+```
+ip nat source static tcp 192.168.1.10 80 172.16.4.4 8080
+ip nat source static tcp 192.168.1.10 2026 172.16.4.4 2026
+write memory
+```
+
+### 🍃 BR-RTR
+
+```
+(config)#ip nat source static tcp 192.168.3.10 8080 172.16.5.5 8080
+(config)#ip nat source static tcp 192.168.3.10 2026 172.16.5.5 2026
+write memory
+```
+8 tasks done - normal. DNAT здесь исходя из смысла
+
+Можно хоть вначале сделать, но не успел сделать приложения
+
 ---
-
-
-
-
 
 

@@ -277,3 +277,4 @@ echo Authorized access only > /etc/openssh/banner
 systemctl restart sshd
 ```
 
+### Принцип: все задания за час, максимум команд на одном устройстве за один подход последовательно

@@ -202,7 +202,6 @@ write memory
 (config)#ip nat source static tcp 192.168.3.10 2026 172.16.5.5 2026
 write memory
 ```
-
 8 tasks done - normal
 ---
 DNAT здесь исходя из смысла
@@ -256,6 +255,7 @@ http://web.au-team.irpo
 http://docker.au-team.irpo
 ```
 10 tasks done - hard
+---
 
 ### 🐧 HQ-CLI
 
@@ -329,7 +329,6 @@ samba-tool group listmembers hq
 ```
 # Part 3
 system-auth write ad au-team.irpo hq-cli AU-TEAM administrator 'P@ssw0rd!'
-reboot
 
 # Part 4
 vim /etc/security/access.conf
@@ -341,5 +340,15 @@ vim /etc/security/access.conf
 EDITOR=nano visudo
 %hq ALL=(ALL) NOPASSWD: /bin/cat, /bin/grep, /usr/bin/id
 
+reboot
+su - hquser1
+sudo id
+sudo cat /etc/passwd
+sudo bash
 ```
+All tasks done - very hard (Безумие :D)
+---
 
+### Принцип: сколько успел - столько успел и столько баллов получил за выполненные задания
+
+### Поделил на условные сложности - отметки сколько успел выполнить задании за 1 ч. 30 мин.

@@ -105,7 +105,7 @@ HQ-RTR ansible_host=192.168.1.1 ansible_user=admin ansible_password=admin ansibl
 BR-RTR ansible_host=192.168.3.1 ansible_user=admin ansible_password=admin ansible_connection=network_cli ansible_network_os=ios ansible_python_interpreter=/usr/bin/python3
 ansible all -m ping
 ```
-5 tasks done
+5 tasks done - easy
 ---
 
 ### 🐧 BR-SRV
@@ -186,7 +186,7 @@ systemctl restart httpd2
 http://192.168.1.10
 http://192.168.3.10:8080
 ```
-7 tasks done
+7 tasks done - normal
 ---
 
 

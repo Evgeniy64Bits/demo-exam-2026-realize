@@ -346,7 +346,7 @@ sudo id
 sudo cat /etc/passwd
 sudo bash
 ```
-All tasks done - very hard (Безумие :D)
+All tasks done - very hard (Безумие, не иначе)
 ---
 
 ### Принцип: сколько успел - столько успел и столько баллов получил за выполненные задания

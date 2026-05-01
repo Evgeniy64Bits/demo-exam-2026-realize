@@ -264,7 +264,7 @@ nameserver 192.168.3.10
 nameserver 192.168.1.10
 ```
 
-### 🐧 HQ-SRV - not important i think but perfectly
+### 🐧 HQ-SRV - not important i think, but perfectly
 
 ```
 vim /etc/dnsmasq.conf

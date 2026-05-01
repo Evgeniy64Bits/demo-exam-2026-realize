@@ -11,8 +11,8 @@ echo HTTP_PROXY=http://10.0.21.52:3128 >> /etc/sysconfig/network
 reboot
 mkdir /etc/net/ifaces/ens19
 mkdir /etc/net/ifaces/ens20
-printf "BOOTPROTO=static\nTYPE=eth\n" > /etc/net/ifaces/ens19/options
-printf "BOOTPROTO=static\nTYPE=eth\n" > /etc/net/ifaces/ens20/options
+echo 'TYPE=eth' > /etc/net/ifaces/ens19/options 
+echo 'TYPE=eth' > /etc/net/ifaces/ens20/options
 echo 172.16.1.1/28 > /etc/net/ifaces/ens19/ipv4address 
 echo 172.16.2.1/28 > /etc/net/ifaces/ens20/ipv4address
 systemctl restart network
@@ -35,10 +35,8 @@ table ip nat {
 EOT
 systemctl enable --now nftables
 
-touch /etc/rc.d/rc.local
-echo -e '#!/bin/bash\necho 1 > /proc/sys/net/ipv4/ip_forward' > /etc/rc.d/rc.local
-chmod +x /etc/rc.d/rc.local
-/etc/rc.d/rc.local
+echo "net.ipv4.ip_forward = 1" >> /etc/net/sysctl.conf
+systemctl restart network
 cat /proc/sys/net/ipv4/ip_forward
 ```
 

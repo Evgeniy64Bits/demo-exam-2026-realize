@@ -155,6 +155,8 @@ docker ps -a
 ### 🐧 HQ-SRV
 
 ```
+apt-get install httpd2 apache2-mod_php8.1 php8.1 php8.1-mysqlnd php8.1-mysqli -y
+systemctl enable --now httpd2
 
 ```
 

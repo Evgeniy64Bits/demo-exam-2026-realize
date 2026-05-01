@@ -109,6 +109,16 @@ ansible all -m ping
 5 tasks done
 ---
 
+### 🐧 HQ-SRV
+
+```
+apt-get update
+apt-get install httpd2 apache2-mod_php8.1 php8.1 php8.1-mysqlnd php8.1-mysqli -y
+
+
+```
+
+
 
 
 

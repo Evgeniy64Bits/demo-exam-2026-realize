@@ -745,7 +745,7 @@ nameserver 192.168.1.10
 На HQ-SRV добавим forwarding запросов к BR-SRV для домена в /etc/dnamasq.conf:
 
 ```
-vim /etc/dnamasq.conf
+vim /etc/dnsmasq.conf
 # добавляем строчку:
 server=/au-team.irpo/192.168.3.10
 

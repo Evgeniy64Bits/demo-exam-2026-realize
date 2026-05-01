@@ -53,7 +53,12 @@ vim /etc/chrony.conf
 server 172.16.4.1 iburst
 systemctl enable --now chronyd
 
-
+apt-get install nfs-server -y
+systemctl enable --now nfs-server
+mkdir -p /raid/nfs
+chmod 777 /raid/nfs
+echo "/raid/nfs 192.168.2.0/28(rw,sync,no_subtree_check)" >> /etc/exports
+exportfs -rav
 ```
 
 ### 🐧 HQ-CLI
@@ -104,10 +109,4 @@ ansible all -m ping
 
 
 
-
-
-
-
-
-### 🍃 HQ-RTR
 

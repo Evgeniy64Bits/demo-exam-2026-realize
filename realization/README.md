@@ -740,6 +740,7 @@ Systemd — это подсистема инициализации и управ
 ### Шаг 17
 
 Первый адаптер - "VMnet2". К ISP
+
 Второй адаптер - "VMnet4". К HQ-сети (VLAN)
 
 ![Шаг 17](../pictures-r/hq-rtr-adapters-conf.png)

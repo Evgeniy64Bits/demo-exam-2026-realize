@@ -838,7 +838,62 @@ write memory - команда для записи изменений в марш
 
 ## Реализация стенда вторым способом по шагам
 
-### Шаг 1
+### Шаг 1 - Создание ВМ "Proxmox VE"
 
-Создадим виртуальную машину. Жмём во вкладке "Home" → "Create a New Virtual Machine" → тип конфигурации "Custom".
+Создадим виртуальную машину. Жмём во вкладке "Home" → "Create a New Virtual Machine" → тип конфигурации "Custom", затем просто далее
+
+"Installer disk image file (iso):" выбираем установочный .iso для pve
+
+![Шаг 1](../pictures-r/pve-select-iso.png)
+
+Тип ОС: Other 64-bit
+
+![Шаг 1](../pictures-r/pve-select-os.png)
+
+Задаём имя и местоположение ВМ
+
+![Шаг 1](../pictures-r/pve-name-location.png)
+
+Выставляем количество ядер процессора для виртуалки. Смотрите по своим возможностям
+
+![Шаг 1](../pictures-r/pve-cpu-cores-select.png)
+
+Выставляем количество выделенной RAM. 12 GB будет достаточно.
+
+![Шаг 1](../pictures-r/pve-ram-select.png)
+
+Выбираем тип сетевого адаптера - NAT
+
+![Шаг 1](../pictures-r/pve-adapter-select.png)
+
+Выбираем тип дискового контроллера. Я предпочитаю "Paravirtualized SCSI"
+
+![Шаг 1](../pictures-r/pve-disk-controller-select.png)
+
+Выбираем тип диска. Я выбираю "SCSI"
+
+![Шаг 1](../pictures-r/pve-disk-type-select.png)
+
+Выберем создание нового виртуального диска - "Create a new virtual disk"
+
+![Шаг 1](../pictures-r/pve-new-disk-choose.png)
+
+Задаём максимальный размер виртуального диска. Я выставлю 120 GB и хранение виртуального диска в виде одного файла.
+
+![Шаг 1](../pictures-r/pve-disk-size-store-select.png)
+
+Имя диска не меняю
+
+![Шаг 1](../pictures-r/pve-name-disk.png)
+
+Жмём "Finish".
+
+![Шаг 1](../pictures-r/pve-finish-create.png)
+
+Получили созданную ВМ. Далее запускаем её (Power on) и устанавливаем ОС proxmox ve.
+
+![Шаг 1](../pictures-r/pve-created-vm.png)
+
+### Шаг 2 - Установка PVE
+
 

@@ -319,7 +319,7 @@ exit
 
 (config)#port te0
 service-instance te0/br-net
-encapsulation-untagged
+encapsulation untagged
 exit
 exit
 

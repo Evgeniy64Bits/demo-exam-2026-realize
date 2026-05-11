@@ -10,6 +10,8 @@
 
 [Проблема запуска EcoRouter - Часть 2](https://github.com/Evgeniy64Bits/demo-exam-2026-realize/blob/main/realization/README.md#%D0%BA%D0%B0%D1%81%D0%B0%D0%B5%D0%BC%D0%BE-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D1%8B-%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%D0%B0-ecorouter)
 
+[Проблема с сетевой связностью EcoRouter в Модуле 1 + Решение]()
+
 ## Введение
 
 Для начала определимся с текущей задачей.
@@ -1123,4 +1125,4 @@ qm clone 10205 10105 --full true --name BR-RTR
 >
 > ```copy empty-config startup-config```
 > 
-> После этого "Hard Stop" в PVE и повторный запуск, конфигурация будет возращена к к заводским настройкам
+> После этого "Hard Stop" в PVE и повторный запуск, конфигурация будет возращена к заводским настройкам

@@ -124,6 +124,60 @@ no passive-interface tunnel.1
 write memory
 ```
 
+### 🍃 BR-RTR
+
+```
+hostname br-rtr.au-team.irpo
+ip domain-name au-team.irpo
+
+port te0
+service-instance te0/isp-br
+encapsulation untagged
+
+port te1
+service-instance te1/br-net
+encapsulation-untagged
+
+interface e1
+ip address 172.16.2.2/28
+connect port te0 service-instance te0/isp-br
+ip nat outside
+
+interface e2
+ip address 192.168.2.1/28
+connect port te1 service-instance te1/br-net
+ip nat inside
+
+ntp timezone utc+3
+
+username net_admin
+password P@ssw0rd
+role admin
+
+write memory
+
+ip nat pool nat 192.168.2.1-192.168.2.14
+ip nat source dynamic inside-to-outside pool nat overload interface e1
+
+ip route 0.0.0.0/0 172.16.2.1 description default
+
+interface tunnel.1
+ip add 192.168.10.2/30
+ip tunnel 172.16.2.2 172.16.1.2 mode gre
+ip ospf authentication
+ip ospf authentication-key P@$$word
+
+router ospf 1
+network 192.168.10.0/30 area 0.0.0.0
+network 192.168.2.0/28 area 0.0.0.0
+passive-interface default
+no passive-interface tunnel.1
+
+write memory
+show ip ospf neighbor
+show ip route ospf
+```
+
 ### 🐧 HQ-SRV
 
 ```
@@ -193,60 +247,6 @@ DISABLED=no
 systemctl restart network
 
 timedatectl set-timezone Europe/Moscow
-```
-
-### 🍃 BR-RTR
-
-```
-hostname br-rtr.au-team.irpo
-ip domain-name au-team.irpo
-
-port te0
-service-instance te0/isp-br
-encapsulation untagged
-
-port te1
-service-instance te1/br-net
-encapsulation-untagged
-
-interface e1
-ip address 172.16.2.2/28
-connect port te0 service-instance te0/isp-br
-ip nat outside
-
-interface e2
-ip address 192.168.2.1/28
-connect port te1 service-instance te1/br-net
-ip nat inside
-
-ntp timezone utc+3
-
-username net_admin
-password P@ssw0rd
-role admin
-
-write memory
-
-ip nat pool nat 192.168.2.1-192.168.2.14
-ip nat source dynamic inside-to-outside pool nat overload interface e1
-
-ip route 0.0.0.0/0 172.16.2.1 description default
-
-interface tunnel.1
-ip add 192.168.10.2/30
-ip tunnel 172.16.2.2 172.16.1.2 mode gre
-ip ospf authentication
-ip ospf authentication-key P@$$word
-
-router ospf 1
-network 192.168.10.0/30 area 0.0.0.0
-network 192.168.2.0/28 area 0.0.0.0
-passive-interface default
-no passive-interface tunnel.1
-
-write memory
-show ip ospf neighbor
-show ip route ospf
 ```
 
 ### 🐧 BR-SRV

@@ -16,11 +16,10 @@ echo 172.16.2.1/28 > /etc/net/ifaces/ens20/ipv4address
 systemctl restart network
 
 apt-get update
-apt-get install tzdata -y
+apt-get install tzdata nftables -y
 exec bash
 timedatectl set-timezone Europe/Moscow
 
-apt-get install nftables -y
 cat <<'EOT' > /etc/nftables/nftables.nft
 #!/usr/sbin/nft -f
 flush ruleset

@@ -109,7 +109,7 @@ ls /etc/net/ifaces
 mkdir /etc/net/ifaces/ens33
 mkdir /etc/net/ifaces/ens34
 # Создаёт папки для интерфейсов ens33 и ens34. Либо - mkdir /etc/net/ifaces/ens3{3,4}
-vim /etc/net/ifaces/ens33/options
+vim /etc/net/ifaces/ens32/options
 # Создание и открытие файла options через тексторый редактор vim
 BOOTPROTO=dhcp
 TYPE=eth

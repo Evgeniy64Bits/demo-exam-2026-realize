@@ -113,7 +113,7 @@ ip tunnel 172.16.1.2 172.16.2.2 mode gre
 ip ospf authentication
 ip ospf authentication-key P@$$word
 
-(config)#router ospf 1
+router ospf 1
 network 192.168.10.0/30 area 0.0.0.0
 network 192.168.1.0/27 area 0.0.0.0
 network 192.168.1.32/28 area 0.0.0.0
@@ -226,7 +226,7 @@ role admin
 
 write memory
 
-ip nat pool nat 192.168.2.1-192.168.50.14
+ip nat pool nat 192.168.2.1-192.168.2.14
 ip nat source dynamic inside-to-outside pool nat overload interface e1
 
 ip route 0.0.0.0/0 172.16.2.1 description default

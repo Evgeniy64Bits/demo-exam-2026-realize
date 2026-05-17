@@ -54,7 +54,7 @@ server 172.16.4.1 iburst
 systemctl enable --now chronyd
 
 systemctl enable --now nfs-server
-mkdir -p /raid/nfs
+mkdir /raid/nfs
 chmod 777 /raid/nfs
 echo "/raid/nfs 192.168.2.0/28(rw,sync,no_subtree_check)" >> /etc/exports
 exportfs -rav

@@ -177,6 +177,46 @@ show ip ospf neighbor
 show ip route ospf
 ```
 
+### 🐧 HQ-CLI
+
+```
+hostnamectl set-hostname hq-cli.au-team.irpo;exec bash
+
+nano /etc/net/ifaces/ens18/options
+NM_CONTROLLED=no
+DISABLED=no
+systemctl restart network
+
+timedatectl set-timezone Europe/Moscow
+```
+
+### 🐧 BR-SRV
+
+```
+hostnamectl set-hostname br-srv.au-team.irpo;exec bash
+
+vim /etc/net/ifaces/ens18/options
+BOOTPROTO=static
+echo 192.168.2.2/28 > /etc/net/ifaces/ens18/ipv4address
+echo default via 192.168.2.1 > /etc/net/ifaces/ens18/ipv4route
+systemctl restart network
+
+timedatectl set-timezone Europe/Moscow
+
+useradd -s /bin/bash -u 2026 sshuser
+echo "sshuser:P@ssw0rd" | chpasswd
+gpasswd -a sshuser wheel
+echo 'sshuser ALL = (root) NOPASSWD: ALL' >> /etc/sudoers
+
+vim /etc/openssh/sshd_config
+Port 2026
+MaxAuthTries 2
+Banner /etc/openssh/banner
+AllowUsers sshuser
+echo Authorized access only > /etc/openssh/banner
+systemctl restart sshd
+```
+
 ### 🐧 HQ-SRV
 
 ```
@@ -233,46 +273,6 @@ address=/docker.au-team.irpo/172.16.1.1
 address=/web.au-team.irpo/172.16.2.1
 EOT
 systemctl enable --now dnsmasq
-```
-
-### 🐧 HQ-CLI
-
-```
-hostnamectl set-hostname hq-cli.au-team.irpo;exec bash
-
-nano /etc/net/ifaces/ens18/options
-NM_CONTROLLED=no
-DISABLED=no
-systemctl restart network
-
-timedatectl set-timezone Europe/Moscow
-```
-
-### 🐧 BR-SRV
-
-```
-hostnamectl set-hostname br-srv.au-team.irpo;exec bash
-
-vim /etc/net/ifaces/ens18/options
-BOOTPROTO=static
-echo 192.168.2.2/28 > /etc/net/ifaces/ens18/ipv4address
-echo default via 192.168.2.1 > /etc/net/ifaces/ens18/ipv4route
-systemctl restart network
-
-timedatectl set-timezone Europe/Moscow
-
-useradd -s /bin/bash -u 2026 sshuser
-echo "sshuser:P@ssw0rd" | chpasswd
-gpasswd -a sshuser wheel
-echo 'sshuser ALL = (root) NOPASSWD: ALL' >> /etc/sudoers
-
-vim /etc/openssh/sshd_config
-Port 2026
-MaxAuthTries 2
-Banner /etc/openssh/banner
-AllowUsers sshuser
-echo Authorized access only > /etc/openssh/banner
-systemctl restart sshd
 ```
 
 ### Принцип: anyway за час, максимум команд на одном устройстве за один подход последовательно

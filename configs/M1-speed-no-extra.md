@@ -112,8 +112,8 @@ ip ospf authentication-key P@$$word
 router ospf 1
 network 192.168.10.0/30 area 0.0.0.0
 network 192.168.1.0/27 area 0.0.0.0
-network 192.168.1.32/28 area 0.0.0.0
-network 192.168.100.48/29 area 0.0.0.0
+network 192.168.1.32/27 area 0.0.0.0
+network 192.168.100.64/29 area 0.0.0.0
 passive-interface default
 no passive-interface tunnel.1
 

@@ -38,7 +38,7 @@ HQ-RTR -> ISP: 172.16.1.2/28
 
 В размер подсетей мы задаём в ipmeter количество ip-адресов на хосты, а в условии имеется ввиду общее число ip-адресов (хосты + широковещательный + ip-адрес сети)
 
-<img width="911" height="199" alt="image" src="https://github.com/user-attachments/assets/1062f951-2027-4105-b9d3-4b9aecf5a375" />
+<img width="908" height="225" alt="image" src="https://github.com/user-attachments/assets/0ab9a32f-3666-4429-87e7-606c90d951bf" />
 
 ---
 

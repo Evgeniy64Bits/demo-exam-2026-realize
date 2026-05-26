@@ -93,12 +93,12 @@ ssh user@192.168.1.34
 apt-get update && apt-get install ansible sshpass -y
 vim /etc/ansible/hosts
 [hq]
-HQ-SRV ansible_port=2026 ansible_host=192.168.1.2 ansible_user=sshuser ansible_ssh_pass=P@ssw0rd ansible_python_interpreter=/usr/bin/python3
-HQ-CLI ansible_host=192.168.1.34 ansible_user=user ansible_ssh_pass=resu ansible_python_interpreter=/usr/bin/python3
+hq-srv ansible_port=2026 ansible_host=192.168.1.2 ansible_user=sshuser ansible_ssh_pass=P@ssw0rd ansible_python_interpreter=/usr/bin/python3
+hq-cli ansible_host=192.168.1.34 ansible_user=user ansible_ssh_pass=resu ansible_python_interpreter=/usr/bin/python3
 
 [routers]
-HQ-RTR ansible_host=192.168.1.1 ansible_user=admin ansible_password=admin ansible_connection=network_cli ansible_network_os=ios ansible_python_interpreter=/usr/bin/python3
-BR-RTR ansible_host=192.168.2.1 ansible_user=admin ansible_password=admin ansible_connection=network_cli ansible_network_os=ios ansible_python_interpreter=/usr/bin/python3
+hq-rtr ansible_host=192.168.1.1 ansible_user=admin ansible_password=admin ansible_connection=network_cli ansible_network_os=ios ansible_python_interpreter=/usr/bin/python3
+br-rtr ansible_host=192.168.2.1 ansible_user=admin ansible_password=admin ansible_connection=network_cli ansible_network_os=ios ansible_python_interpreter=/usr/bin/python3
 
 ansible all -m ping
 ```
@@ -275,7 +275,7 @@ systemctl restart dnsmasq
 # Part 1
 vim /etc/hosts
 127.0.0.1 localhost
-192.168.2.2 BR-SRV.au-team.irpo BR-SRV
+192.168.2.2 br-srv.au-team.irpo br-srv
 
 vim /etc/resolv.conf
 search au-team.irpo

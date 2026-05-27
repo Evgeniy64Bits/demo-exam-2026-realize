@@ -144,6 +144,7 @@ services:
       MARIADB_PASSWORD: P@ssw0rd
       MARIADB_ROOT_PASSWORD: rootpass
 cd /usr/docker
+docker compose config
 docker compose up -d
 docker ps -a
 ```

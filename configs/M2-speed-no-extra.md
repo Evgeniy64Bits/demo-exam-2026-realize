@@ -153,8 +153,8 @@ docker ps -a
 
 ```
 apt-get install httpd2 apache2-mod_php8.1 php8.1 php8.1-mysqlnd php8.1-mysqli -y
-systemctl enable --now httpd2
 apt-get install mariadb-server -y
+systemctl enable --now httpd2
 systemctl enable --now mariadb
 mysql -u root
 CREATE DATABASE webdb;

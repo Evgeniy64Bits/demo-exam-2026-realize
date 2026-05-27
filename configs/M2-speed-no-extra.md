@@ -223,7 +223,7 @@ DNAT здесь исходя из смысла
 ### 🐧 ISP
 
 ```
-apt-get update && apt-get install nginx apache2-htpasswd -y
+apt-get update && apt-get install nginx apache2-htpasswd nano -y
 systemctl enable --now nginx
 htpasswd -c /etc/nginx/.htpasswd WEB
 P@ssw0rd

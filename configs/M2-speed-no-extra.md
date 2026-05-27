@@ -68,6 +68,7 @@ vim /etc/chrony.conf
 #pool pool.ntp.org iburst
 server 172.16.1.1 iburst
 systemctl restart chronyd
+chronyc sources
 
 mkdir /mnt/nfs
 mount 192.168.1.2:/raid/nfs /mnt/nfs

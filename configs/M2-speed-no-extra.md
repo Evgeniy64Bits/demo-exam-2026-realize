@@ -71,9 +71,9 @@ systemctl enable --now chronyd
 chronyc sources
 
 mkdir /mnt/nfs
-mount 192.168.1.10:/raid/nfs /mnt/nfs
+mount 192.168.1.2:/raid/nfs /mnt/nfs
 vim /etc/fstab
-192.168.1.10:/raid/nfs  /mnt/nfs  nfs  defaults,_netdev  0  0
+192.168.1.2:/raid/nfs  /mnt/nfs  nfs  defaults,_netdev  0  0
 mount -av
 ```
 

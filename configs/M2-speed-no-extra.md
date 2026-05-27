@@ -45,8 +45,7 @@ systemctl restart chronyd
 
 mdadm --create /dev/md0 -l0 -n 2 /dev/sdb /dev/sdc
 mkfs.ext4 /dev/md0
-echo "DEVICE partitions" > /etc/mdadm.conf
-mdadm --detail --scan >> /etc/mdadm.conf
+mdadm --detail /dev/md0 > /etc/mdadm.conf
 mkdir /raid
 vim /etc/fstab
 /dev/md0	/raid	ext4	defaults	0	0

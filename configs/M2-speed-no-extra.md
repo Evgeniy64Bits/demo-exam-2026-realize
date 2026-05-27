@@ -204,12 +204,12 @@ write memory
 
 ```
 apt-get install curl -y
-curl http://172.16.1.1:8080
-curl http://172.16.2.1:8080
+curl http://172.16.1.2:8080
+curl http://172.16.2.2:8080
 
 systemctl enable --now sshd
-ssh sshuser@172.16.1.1 -p 2026
-ssh sshuser@172.16.2.1 -p 2026
+ssh sshuser@172.16.1.2 -p 2026
+ssh sshuser@172.16.2.2 -p 2026
 ```
 
 8 tasks done - normal

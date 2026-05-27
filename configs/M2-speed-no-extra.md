@@ -79,7 +79,7 @@ mount -av
 ### 🐧 BR-SRV
 
 ```
-apt-get update && apt-get install chrony -y
+apt-get update && apt-get install chrony ansible sshpass -y
 vim /etc/chrony.conf
 #pool pool.ntp.org iburst
 server 172.16.2.1 iburst
@@ -88,7 +88,6 @@ systemctl enable --now chronyd
 ssh sshuser@192.168.1.2 -p 2026
 ssh user@192.168.1.34
 
-apt-get update && apt-get install ansible sshpass -y
 vim /etc/ansible/hosts
 [hq]
 hq-srv ansible_port=2026 ansible_host=192.168.1.2 ansible_user=sshuser ansible_ssh_pass=P@ssw0rd ansible_python_interpreter=/usr/bin/python3

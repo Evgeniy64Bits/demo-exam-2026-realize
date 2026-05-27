@@ -227,7 +227,7 @@ apt-get update && apt-get install nginx apache2-htpasswd nano -y
 systemctl enable --now nginx
 htpasswd -c /etc/nginx/.htpasswd WEB
 P@ssw0rd
-vim /etc/nginx/sites-enabled.d/reverse.conf
+nano /etc/nginx/sites-enabled.d/reverse.conf
 server {
     listen 80;
     server_name web.au-team.irpo;

@@ -187,16 +187,16 @@ http://192.168.2.2:8080
 ### 🍃 HQ-RTR
 
 ```
-ip nat source static tcp 192.168.1.2 80 172.16.1.1 8080
-ip nat source static tcp 192.168.1.2 2026 172.16.1.1 2026
+ip nat source static tcp 192.168.1.2 80 172.16.1.2 8080
+ip nat source static tcp 192.168.1.2 2026 172.16.1.2 2026
 write memory
 ```
 
 ### 🍃 BR-RTR
 
 ```
-(config)#ip nat source static tcp 192.168.2.2 8080 172.16.2.1 8080
-(config)#ip nat source static tcp 192.168.2.2 2026 172.16.2.1 2026
+(config)#ip nat source static tcp 192.168.2.2 8080 172.16.2.2 8080
+(config)#ip nat source static tcp 192.168.2.2 2026 172.16.2.2 2026
 write memory
 ```
 

@@ -8,7 +8,7 @@
 vim /etc/chrony.conf
 local stratum 5
 allow 0.0.0.0/0
-systemctl enable --now chronyd
+systemctl restart chronyd
 ```
 
 ### 🍃 BR-RTR
@@ -41,7 +41,7 @@ apt-get update && apt-get install chrony nfs-server -y
 vim /etc/chrony.conf
 #pool pool.ntp.org iburst
 server 172.16.1.1 iburst
-systemctl enable --now chronyd
+systemctl restart chronyd
 
 mdadm --create /dev/md0 -l0 -n 2 /dev/sdb /dev/sdc
 mkfs.ext4 /dev/md0
@@ -55,7 +55,7 @@ mount -av
 systemctl enable --now nfs-server
 mkdir /raid/nfs
 chmod 777 /raid/nfs
-echo "/raid/nfs 192.168.2.0/28(rw,sync,no_subtree_check)" >> /etc/exports
+echo "/raid/nfs 192.168.1.33/27(rw,sync,no_subtree_check)" >> /etc/exports
 exportfs -rav
 ```
 
@@ -67,13 +67,15 @@ apt-get update && apt-get install yandex-browser-stable -y
 vim /etc/chrony.conf
 #pool pool.ntp.org iburst
 server 172.16.1.1 iburst
-systemctl enable --now chronyd
+systemctl restart chronyd
 
 mkdir /mnt/nfs
 mount 192.168.1.2:/raid/nfs /mnt/nfs
 vim /etc/fstab
 192.168.1.2:/raid/nfs  /mnt/nfs  nfs  defaults,_netdev  0  0
 mount -av
+
+systemctl enable --now sshd
 ```
 
 ### 🐧 BR-SRV
@@ -83,7 +85,7 @@ apt-get update && apt-get install chrony ansible sshpass -y
 vim /etc/chrony.conf
 #pool pool.ntp.org iburst
 server 172.16.2.1 iburst
-systemctl enable --now chronyd
+systemctl restart chronyd
 
 ssh sshuser@192.168.1.2 -p 2026
 ssh user@192.168.1.34

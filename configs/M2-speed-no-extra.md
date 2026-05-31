@@ -153,6 +153,11 @@ docker ps -a
 
 ```
 apt-get install httpd2 apache2-mod_php8.1 php8.1 php8.1-mysqlnd php8.1-mysqli -y
+vim /etc/apt/sources.list.d/alt.list     (раскомментировать реп-ии)
+rpm [p10] http://ftp.atllinux.org/pub/distributions/ALTLinux p10/branch/x86_64 classic
+rpm [p10] http://ftp.atllinux.org/pub/distributions/ALTLinux p10/branch/noarch classic
+rpm [p10] http://ftp.atllinux.org/pub/distributions/ALTLinux p10/branch/x86_64-i586 classic
+apt-get update
 apt-get install mariadb-server -y
 systemctl enable --now httpd2
 systemctl enable --now mariadb
@@ -294,8 +299,11 @@ search au-team.irpo
 nameserver 192.168.2.2
 nameserver 192.168.1.2
 
-apt-get update
-apt-get install task-samba-dc task-auth-ad-sssd -y
+vim /etc/apt/sources.list.d/alt.list     (раскомментировать реп-ии)
+rpm [p10] http://ftp.atllinux.org/pub/distributions/ALTLinux p10/branch/x86_64 classic
+rpm [p10] http://ftp.atllinux.org/pub/distributions/ALTLinux p10/branch/noarch classic
+rpm [p10] http://ftp.atllinux.org/pub/distributions/ALTLinux p10/branch/x86_64-i586 classic
+apt-get update && apt-get install task-samba-dc task-auth-ad-sssd -y
 
 rm -f /etc/samba/smb.conf
 rm -rf /var/lib/samba

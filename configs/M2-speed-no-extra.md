@@ -54,7 +54,7 @@ mount -av
 systemctl enable --now nfs-server
 mkdir /raid/nfs
 chmod 777 /raid/nfs
-echo "/raid/nfs 192.168.1.33/27(rw,sync,no_subtree_check)" >> /etc/exports
+echo "/raid/nfs 192.168.1.32/27(rw,sync,no_subtree_check)" >> /etc/exports
 exportfs -rav
 ```
 
